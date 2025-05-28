@@ -31,20 +31,23 @@ nav.navbar {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: var(--card-bg);
+  background: rgba(255,255,255,0.85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 16px rgba(26,115,232,0.04);
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 .navbar-logo .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: var(--primary);
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 1px;
   text-decoration: none;
 }
@@ -67,10 +70,10 @@ nav.navbar {
 .navbar-links a {
   color: var(--text);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s;
   font-size: 1.1rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  padding: 0.25rem 0.7rem;
+  border-radius: 6px;
 }
 
 .navbar-links a:hover, .navbar-links a.active {
@@ -95,7 +98,7 @@ nav.navbar {
     position: absolute;
     top: 64px;
     right: 0;
-    background: var(--card-bg);
+    background: rgba(255,255,255,0.97);
     flex-direction: column;
     align-items: flex-end;
     width: 180px;
@@ -115,35 +118,53 @@ nav.navbar {
   }
 }
 
-/* Hero */
+/* Hero Fullscreen Modern */
 .hero {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  min-height: 60vh;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(120deg, #e3f0ff 0%, #f9f9f9 100%);
   text-align: center;
-  padding: 4rem 1rem 2rem 1rem;
+  padding: 0 1rem;
+}
+
+.hero .profile-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 32px;
+  border: 5px solid #1a73e8;
+  box-shadow: 0 8px 32px rgba(26,115,232,0.15);
+  z-index: 1;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 800;
   margin-bottom: 1rem;
   color: var(--primary);
+  z-index: 1;
 }
 
-.hero p {
-  font-size: 1.25rem;
-  color: #444;
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 16px 0;
+  min-height: 36px;
+  z-index: 1;
 }
 
 .hero-socials {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   justify-content: center;
-  margin: 1.5rem 0 1rem 0;
+  margin: 2rem 0 1.5rem 0;
+  z-index: 1;
 }
 
 .hero-socials a {
@@ -161,12 +182,14 @@ nav.navbar {
   margin-top: 1.5rem;
   background: var(--primary);
   color: #fff;
-  padding: 0.75rem 2rem;
-  border-radius: 6px;
-  font-weight: 600;
+  padding: 0.9rem 2.2rem;
+  border-radius: 8px;
+  font-weight: 700;
   text-decoration: none;
+  font-size: 1.15rem;
   transition: background 0.2s, box-shadow 0.2s;
   box-shadow: var(--shadow);
+  z-index: 1;
 }
 
 .hero-cta:hover {
@@ -174,54 +197,119 @@ nav.navbar {
   box-shadow: 0 4px 16px rgba(26,115,232,0.10);
 }
 
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: #444;
-  margin-bottom: 0.5rem;
+/* Section Dividers */
+section {
+  position: relative;
+}
+section:not(:first-child)::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #1a73e8 0%, #e3f0ff 100%);
+  opacity: 0.15;
+}
+
+/* Section Spacing */
+.hero, .about-section, .projects-section, .contact-section {
+  scroll-margin-top: 90px;
 }
 
 /* About */
 .about-section {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
   padding: 3rem 1rem 2rem 1rem;
+  background: none;
 }
 
-.about-section .profile-img {
+.about-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(26,115,232,0.07);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--border);
+}
+
+.about-card .profile-img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--primary);
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 12px rgba(26,115,232,0.10);
+  margin-bottom: 1.5rem;
 }
 
-.about-section .about-content {
-  flex: 1;
+.about-content {
+  width: 100%;
+  text-align: center;
 }
 
-.about-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.about-intro {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+.about-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1.5rem 0 2rem 0;
+  gap: 1.2rem;
+  position: relative;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  background: var(--primary);
+  border-radius: 50%;
+  margin-top: 0.3rem;
+  box-shadow: 0 2px 8px rgba(26,115,232,0.10);
+}
+
+.timeline-item h4 {
+  font-size: 1.05rem;
   color: var(--primary);
+  margin-bottom: 0.2rem;
 }
 
-.about-section ul {
-  margin: 0.5rem 0 1rem 1.5rem;
+.timeline-item p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.about-skills-title {
+  color: var(--primary);
+  margin-bottom: 0.7rem;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 700px) {
-  .about-section {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .about-section .about-content {
-    width: 100%;
+  .about-card {
+    padding: 1.5rem 0.5rem 1.5rem 0.5rem;
   }
 }
 
@@ -277,6 +365,44 @@ nav.navbar {
 
 .project-card a:hover {
   text-decoration: underline;
+}
+
+.project-image-wrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background: #f1f5fb;
+}
+
+.project-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.04) rotate(-1deg);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.project-tag {
+  background: #e3f0ff;
+  color: #1a73e8;
+  font-size: 0.95rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(26,115,232,0.06);
 }
 
 /* Skills */
@@ -370,5 +496,5 @@ footer.footer {
 
 /* Section Spacing */
 .hero, .about-section, .projects-section, .contact-section {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 90px;
 }
