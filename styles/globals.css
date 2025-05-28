@@ -1,12 +1,12 @@
 /* CSS Variables and Reset */
 :root {
-  --primary: #1a73e8;
-  --bg: #f9f9f9;
-  --text: #222;
-  --card-bg: #fff;
-  --border: #e5e7eb;
+  --primary: #4f8cff;
+  --bg: #181c24;
+  --text: #e6e6e6;
+  --card-bg: #23283a;
+  --border: #2d3347;
   --radius: 12px;
-  --shadow: 0 2px 8px rgba(0,0,0,0.04);
+  --shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
 * {
@@ -31,7 +31,7 @@ nav.navbar {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255,255,255,0.85);
+  background: rgba(24,28,36,0.92);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
@@ -127,7 +127,7 @@ nav.navbar {
   align-items: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(120deg, #e3f0ff 0%, #f9f9f9 100%);
+  background: linear-gradient(120deg, #23283a 0%, #181c24 100%);
   text-align: center;
   padding: 0 1rem;
 }
@@ -153,7 +153,7 @@ nav.navbar {
 
 .hero-subtitle {
   font-size: 1.5rem;
-  color: #333;
+  color: #b0b8d1;
   margin: 16px 0;
   min-height: 36px;
   z-index: 1;
@@ -261,7 +261,7 @@ section:not(:first-child)::before {
   font-weight: 500;
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
-  color: #444;
+  color: #b0b8d1;
 }
 
 .about-timeline {
@@ -296,7 +296,7 @@ section:not(:first-child)::before {
 }
 
 .timeline-item p {
-  color: #555;
+  color: #b0b8d1;
   font-size: 1rem;
   margin-bottom: 0;
 }
@@ -396,8 +396,8 @@ section:not(:first-child)::before {
 }
 
 .project-tag {
-  background: #e3f0ff;
-  color: #1a73e8;
+  background: #2d3347;
+  color: #8ab4ff;
   font-size: 0.95rem;
   padding: 0.25rem 0.75rem;
   border-radius: 6px;
@@ -487,14 +487,49 @@ section:not(:first-child)::before {
 footer.footer {
   text-align: center;
   padding: 2rem 1rem 1rem 1rem;
-  background: var(--card-bg);
+  background: #23283a;
   border-top: 1px solid var(--border);
   margin-top: 2rem;
-  color: #888;
+  color: #b0b8d1;
   font-size: 1rem;
 }
 
 /* Section Spacing */
 .hero, .about-section, .projects-section, .contact-section {
   scroll-margin-top: 90px;
+}
+
+/* Certifications */
+.certifications-card {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto 2rem auto;
+  padding: 1.5rem 2rem;
+  border-radius: 14px;
+  background: var(--card-bg);
+  box-shadow: 0 2px 12px rgba(79,140,255,0.08);
+  text-align: center;
+}
+
+.certifications-card h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.certifications-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.certifications-list a {
+  color: #8ab4ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.certifications-list a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
