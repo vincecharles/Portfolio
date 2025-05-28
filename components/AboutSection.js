@@ -4,36 +4,21 @@ export default function AboutSection() {
       <div className="about-card">
         <img
           src="/profile.jpg"
-          alt="Vince de Guzman"
+          alt="Vince Charles de Guzman"
           className="profile-img"
         />
         <div className="about-content">
           <h2>About Me</h2>
           <p className="about-intro">
-            Hi! I'm Vince, a passionate developer focused on building performant
-            and accessible web applications. I love working with modern JavaScript
-            frameworks and creating beautiful user experiences.
+            Hi! I'm Vince, a developer focused on building performant
+            and accessible web applications.
           </p>
           <div className="about-timeline">
             <div className="timeline-item">
               <div className="timeline-dot" />
               <div>
-                <h4>2023 - Present</h4>
-                <p>Full Stack Developer at Awesome Company</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-dot" />
-              <div>
-                <h4>2021 - 2023</h4>
-                <p>Frontend Developer at Web Studio</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-dot" />
-              <div>
-                <h4>2017 - 2021</h4>
-                <p>B.S. in Computer Science, University</p>
+                <h4>2022-Present</h4>
+                <p>B.S. in Information Technology,FEATI University</p>
               </div>
             </div>
           </div>
