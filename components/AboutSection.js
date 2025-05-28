@@ -1,3 +1,5 @@
+import Carousel from 'react-bootstrap/Carousel';
+
 export default function AboutSection() {
   return (
     <section className="about-section" id="about">
@@ -37,16 +39,63 @@ export default function AboutSection() {
             </div>
           </div>
           <h3 className="about-skills-title">Skills</h3>
-          <div className="skills-grid">
-            <span>JavaScript</span>
-            <span>TypeScript</span>
-            <span>React</span>
-            <span>Next.js</span>
-            <span>Node.js</span>
-            <span>Express</span>
-            <span>CSS3</span>
-            <span>Tailwind CSS</span>
-            <span>Git</span>
+          <div className="skills-carousel-wrapper">
+            <Carousel
+              indicators={false}
+              controls={false}
+              interval={1500}
+              pause={false}
+              className="skills-carousel"
+            >
+              <Carousel.Item>
+                <div className="skills-slide">
+                  <img
+                    src="/images/skills/HTML5.svg"
+                    alt="HTML5"
+                    className="skill-logo"
+                  />
+                  <img
+                    src="/images/skills/CSS3.svg"
+                    alt="CSS3"
+                    className="skill-logo"
+                  />
+                  <img
+                    src="/images/skills/javascript-logo-svgrepo-com.svg"
+                    alt="JavaScript"
+                    className="skill-logo"
+                  />
+                  <img
+                    src="/images/skills/php-svgrepo-com.svg"
+                    alt="PHP"
+                    className="skill-logo"
+                  />
+                </div>
+              </Carousel.Item>
+              <Carousel.Item>
+                <div className="skills-slide">
+                  <img
+                    src="/images/skills/nextjs-svgrepo-com.svg"
+                    alt="Next.js"
+                    className="skill-logo"
+                  />
+                  <img
+                    src="/images/skills/laravel-svgrepo-com.svg"
+                    alt="Laravel"
+                    className="skill-logo"
+                  />
+                  <img
+                    src="/images/skills/python-svgrepo-com.svg"
+                    alt="Python"
+                    className="skill-logo"
+                  />
+                  <img
+                    src="/images/skills/react-svgrepo-com.svg"
+                    alt="React"
+                    className="skill-logo"
+                  />
+                </div>
+              </Carousel.Item>
+            </Carousel>
           </div>
         </div>
       </div>
