@@ -1,9 +1,23 @@
 export default function AboutSection() {
   return (
     <section className="about-section" id="about">
+      <div className="certifications-card">
+        <h3>Certifications</h3>
+        <ul className="certifications-list">
+          <li>
+            <a
+              href="https://examregistration.github.com/profile/certifications"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View all certifications on GitHub &rarr;
+            </a>
+          </li>
+        </ul>
+      </div>
       <div className="about-card">
         <img
-          src="/profile.jpg"
+          src="/Me.jpg"
           alt="Vince Charles de Guzman"
           className="profile-img"
         />
