@@ -52,12 +52,12 @@ export default function AboutSection() {
               <Carousel.Item>
                 <div className="skills-slide">
                   <img
-                    src="/images/skills/HTML5.svg"
+                    src="/images/skills/html5-svgrepo-com.svg"
                     alt="HTML5"
                     className="skill-logo"
                   />
                   <img
-                    src="/images/skills/CSS3.svg"
+                    src="/images/skills/css-3-svgrepo-com.svg"
                     alt="CSS3"
                     className="skill-logo"
                   />
