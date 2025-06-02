@@ -59,7 +59,8 @@ p {
 	background: linear-gradient(135deg, #181c24 0%, #1a1f29 100%) !important;
 	position: relative;
 	padding: 4rem 0;
-	border: 2px solid rgba(79, 140, 255, 0.3);
+	border: 3px solid #4f8cff !important;
+	box-shadow: 0 0 0 2px #23283a, 0 0 24px 0 rgba(79,140,255,0.08);
 	border-left: none;
 	border-right: none;
 	margin: 1rem 0;
@@ -88,7 +89,8 @@ p {
 	background: linear-gradient(135deg, #1e2329 0%, #252b35 100%) !important;
 	position: relative;
 	padding: 4rem 0;
-	border: 2px solid rgba(79, 140, 255, 0.4);
+	border: 3px solid #4f8cff !important;
+	box-shadow: 0 0 0 2px #23283a, 0 0 24px 0 rgba(79,140,255,0.08);
 	border-left: none;
 	border-right: none;
 	margin: 1rem 0;
@@ -421,7 +423,7 @@ section:not(:first-child)::before {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: 1px solid var(--border);
+	border: 2px solid #4f8cff !important;
 }
 
 .about-card .profile-img {
@@ -445,7 +447,7 @@ section:not(:first-child)::before {
 
 .about-me-section {
 	background: var(--card-bg);
-	border: 1px solid var(--border);
+	border: 2px solid #4f8cff !important;
 	border-radius: var(--radius);
 	padding: 2.5rem;
 	text-align: center;
@@ -468,7 +470,7 @@ section:not(:first-child)::before {
 
 .education-section {
 	background: var(--card-bg);
-	border: 1px solid var(--border);
+	border: 2px solid #4f8cff !important;
 	border-radius: var(--radius);
 	padding: 2.5rem;
 	box-shadow: var(--shadow);
@@ -638,7 +640,7 @@ section:not(:first-child)::before {
 	box-shadow: var(--shadow);
 	padding: 2rem 1.5rem;
 	transition: transform 0.2s, box-shadow 0.2s;
-	border: 1px solid var(--border);
+	border: 2px solid #4f8cff !important;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
@@ -805,7 +807,7 @@ section:not(:first-child)::before {
 	padding: 2rem;
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
-	border: 1px solid var(--border);
+	border: 2px solid #4f8cff !important;
 }
 
 .contact-section label {
@@ -864,7 +866,7 @@ section:not(:first-child)::before {
 	padding: 2rem;
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
-	border: 1px solid var(--border);
+	border: 2px solid #4f8cff !important;
 	max-width: 500px;
 	margin: 0 auto;
 	width: 100%;
@@ -988,6 +990,7 @@ footer.footer {
 	background: var(--card-bg);
 	box-shadow: 0 2px 12px rgba(79, 140, 255, 0.08);
 	text-align: center;
+	border: 2px solid #4f8cff !important;
 }
 
 .certifications-card h3 {
