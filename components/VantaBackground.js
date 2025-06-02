@@ -27,9 +27,8 @@ export default function VantaBackground({ children }) {
       }
     };
   }, []);
-
   return (
-    <div ref={vantaRef} style={{ minHeight: "100vh", width: "100vw", position: "fixed", top: 0, left: 0, zIndex: -1 }}>
+    <div ref={vantaRef} style={{ minHeight: "100vh", width: "100vw", position: "relative" }}>
       {children}
     </div>
   );
