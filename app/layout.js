@@ -1,5 +1,7 @@
 import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import VantaBackground from '../components/VantaBackground';
 
 export const metadata = {
@@ -12,7 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <VantaBackground>
+          <Navbar />
           {children}
+          <Footer />
         </VantaBackground>
       </body>
     </html>
