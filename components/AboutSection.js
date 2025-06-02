@@ -82,7 +82,7 @@ export default function AboutSection() {
 							</div>
 						</Carousel>
 					</div>
-        /</div>
+        </div>
 		</section>
 	);
 }

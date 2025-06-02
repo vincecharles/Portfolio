@@ -532,6 +532,22 @@ section:not(:first-child)::before {
 	background: #155ab6;
 }
 
+@media (max-width: 600px) {
+	.contact-form {
+		max-width: 100% !important;
+		padding: 0 8px;
+	}
+	.contact-form input,
+	.contact-form textarea {
+		font-size: 15px !important;
+		padding: 10px !important;
+	}
+	.contact-form button {
+		font-size: 15px !important;
+		padding: 10px !important;
+	}
+}
+
 /* Footer */
 footer.footer {
 	text-align: center;
