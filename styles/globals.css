@@ -8,15 +8,15 @@
 	--radius: 12px;
 	--shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 	
-	/* Alternating section backgrounds */
+	/* Alternating section backgrounds - now both dark */
 	--section-dark: #181c24;
-	--section-light: #f8f9fa;
+	--section-light: #1e2329;
 	--text-dark: #e6e6e6;
-	--text-light: #2c3e50;
+	--text-light: #e6e6e6;
 	--card-dark: #23283a;
-	--card-light: #ffffff;
+	--card-light: #2a3340;
 	--border-dark: #2d3347;
-	--border-light: #e1e8ed;
+	--border-light: #3a4556;
 }
 
 * {
@@ -56,9 +56,13 @@ p {
 
 /* Alternating Section Backgrounds */
 .section-dark {
-	background: linear-gradient(135deg, var(--section-dark) 0%, #1a1f29 100%) !important;
+	background: linear-gradient(135deg, #181c24 0%, #1a1f29 100%) !important;
 	position: relative;
 	padding: 4rem 0;
+	border: 2px solid rgba(79, 140, 255, 0.3);
+	border-left: none;
+	border-right: none;
+	margin: 1rem 0;
 }
 
 .section-dark::before {
@@ -81,9 +85,13 @@ p {
 }
 
 .section-light {
-	background: linear-gradient(135deg, var(--section-light) 0%, #ffffff 100%) !important;
+	background: linear-gradient(135deg, #1e2329 0%, #252b35 100%) !important;
 	position: relative;
 	padding: 4rem 0;
+	border: 2px solid rgba(79, 140, 255, 0.4);
+	border-left: none;
+	border-right: none;
+	margin: 1rem 0;
 }
 
 .section-light::before {
@@ -94,14 +102,14 @@ p {
 	right: 0;
 	bottom: 0;
 	background-image: 
-		radial-gradient(circle at 25% 25%, rgba(79, 140, 255, 0.03) 0%, transparent 50%),
-		radial-gradient(circle at 75% 75%, rgba(79, 140, 255, 0.02) 0%, transparent 50%),
+		radial-gradient(circle at 25% 25%, rgba(79, 140, 255, 0.06) 0%, transparent 50%),
+		radial-gradient(circle at 75% 75%, rgba(79, 140, 255, 0.04) 0%, transparent 50%),
 		repeating-linear-gradient(
 			45deg,
 			transparent,
 			transparent 100px,
-			rgba(79, 140, 255, 0.005) 101px,
-			rgba(79, 140, 255, 0.005) 102px
+			rgba(79, 140, 255, 0.02) 101px,
+			rgba(79, 140, 255, 0.02) 102px
 		);
 	pointer-events: none;
 	z-index: 0;
