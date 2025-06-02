@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 
 const roles = [
   'Full Stack Developer',
-  'React Enthusiast',
   'UI/UX Explorer',
   'Open Source Contributor',
 ];
@@ -42,8 +41,8 @@ export default function Hero() {
         zIndex: 0,
       }} />
       <motion.img
-        src="/profile.jpg"
-        alt="Vince de Guzman"
+        src="/public/images/Me.jpg"
+        alt="Vince Charles de Guzman"
         className="profile-img"
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -65,7 +64,7 @@ export default function Hero() {
         transition={{ delay: 0.2, duration: 0.7 }}
         style={{ fontSize: '3rem', fontWeight: 800, color: '#1a73e8', zIndex: 1 }}
       >
-        Vince de Guzman
+        Vince Charles de Guzman
       </motion.h1>
       <motion.p
         className="hero-subtitle"
@@ -83,9 +82,9 @@ export default function Hero() {
         transition={{ delay: 0.7, duration: 0.6 }}
         style={{ zIndex: 1 }}
       >
-        <a href="https://github.com/vince" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub size={32} /></a>
-        <a href="https://linkedin.com/in/vince" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedin size={32} /></a>
-        <a href="mailto:vince@email.com" aria-label="Email"><FaEnvelope size={32} /></a>
+          <a href="https://github.com/vincecharles" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub size={22} /></a>
+          <a href="https://linkedin.com/in/vincehttps://www.linkedin.com/in/vince-charles-40882b28a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedin size={22} /></a>
+          <a href="mailto:vincecharlesdeguzman@outlook.com" aria-label="Email"><FaEnvelope size={22} /></a>
       </motion.div>
       <motion.a
         href="/resume"
