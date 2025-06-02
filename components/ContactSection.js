@@ -5,10 +5,11 @@ import { useState } from "react";
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [error, setError] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError("");
 
     const formData = new FormData(e.target);
     
@@ -19,22 +20,21 @@ export default function ContactSection() {
         headers: {
           Accept: "application/json"
         }
-      });
-
-      if (response.ok) {
+      });      if (response.ok) {
         setSubmitted(true);
+      } else {
+        setError("Failed to send message. Please try again.");
       }
-    } catch (error) {
-      console.error("Form submission error:", error);
+    } catch (err) {
+      setError("Failed to send message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
-
   return (
     <section className="contact-section" id="contact">
       <h2>Contact</h2>
-      <p style={{ textAlign: "center", color: "#555", marginBottom: 24 }}>
+      <p className="contact-description">
         Interested in working together or just want to say hi? Fill out the form
         below or email me directly.
       </p>
@@ -45,98 +45,50 @@ export default function ContactSection() {
       ) : (        <form
           className="contact-form"
           onSubmit={handleSubmit}
-          style={{
-            maxWidth: 500,
-            margin: "0 auto",
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
-          }}
         >
-          <label>
-            Name
+          <div className="contact-form-group">
+            <label className="contact-form-label">
+              Name
+            </label>
             <input
               type="text"
               name="name"
               required
-              style={{
-                padding: 12,
-                borderRadius: 6,
-                border: "1px solid #ccc",
-                marginBottom: 8,
-                fontSize: 16,
-                width: "100%",
-                boxSizing: "border-box",
-              }}
+              className="contact-form-input"
             />
-          </label>
-          <label>
-            Email
+          </div>
+          <div className="contact-form-group">
+            <label className="contact-form-label">
+              Email
+            </label>
             <input
               type="email"
               name="email"
               required
-              style={{
-                padding: 12,
-                borderRadius: 6,
-                border: "1px solid #ccc",
-                marginBottom: 8,
-                fontSize: 16,
-                width: "100%",
-                boxSizing: "border-box",
-              }}
+              className="contact-form-input"
             />
-          </label>
-          <label>
-            Message
+          </div>
+          <div className="contact-form-group">
+            <label className="contact-form-label">
+              Message
+            </label>
             <textarea
               name="message"
               required
-              style={{
-                padding: 12,
-                borderRadius: 6,
-                border: "1px solid #ccc",
-                minHeight: 100,
-                fontSize: 16,
-                width: "100%",
-                boxSizing: "border-box",
-                resize: "vertical",
-              }}
+              className="contact-form-textarea"
             />
-          </label>          <button
+          </div>
+          <button
             type="submit"
             disabled={isSubmitting}
-            style={{
-              padding: 12,
-              borderRadius: 6,
-              background: isSubmitting ? "#ccc" : "#4f8cff",
-              color: "#fff",
-              fontWeight: 600,
-              fontSize: 16,
-              border: "none",
-              marginTop: 8,
-              width: "100%",
-              boxSizing: "border-box",
-              cursor: isSubmitting ? "not-allowed" : "pointer",
-              transition: "background 0.2s",
-            }}
+            className="contact-form-button"
           >
             {isSubmitting ? "Sending..." : "Send"}
           </button>
           {error && (
             <p style={{ color: "red", marginTop: 8 }}>{error}</p>
           )}
-        </form>
-      )}
-      <style jsx>{`
-        @media (max-width: 600px) {
-          .contact-form {
-            padding: 1rem !important;
-            gap: 12px !important;
-          }
-        }
-      `}</style>
+        </form>      )}
     </section>
   );
 }

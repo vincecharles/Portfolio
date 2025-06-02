@@ -1,65 +1,58 @@
-"use client";
-import { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
-import Carousel from "./Carousel";
 
-const GITHUB_USERNAME = "vincecharles";
-const GITHUB_API = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
+const projects = [
+	{
+		id: 1,
+		title: "Banorant",
+		description: "An information application for gamers who like valorant.",
+		link: "https://banorant.netlify.app/",
+		tags: ["React", "CSS", "JavaScript"],
+		image: "/images/projects/banorant-logo.svg"
+	},
+	{
+		id: 2,
+		title: "CineZone 2025",
+		description: "A comprehensive movie discovery platform where users can browse, search, and get detailed information about movies and TV shows.",
+		link: "https://cinezone2025.netlify.app/",
+		tags: ["React", "API Integration", "CSS"],
+		image: "/images/projects/cinezone-logo.svg"
+	},
+	{
+		id: 3,
+		title: "Listahan ng Mamako",
+		description: "A list for groceries.",
+		link: "https://listahanngmamako.netlify.app/",
+		tags: ["HTML", "CSS", "JavaScript"],
+		image: "/images/projects/listahan-logo.svg"
+	},
+	{
+		id: 4,
+		title: "FEATI Computer Society",
+		description: "Official website for FEATI University's Computer Society organization, showcasing events, members, and activities.",
+		link: "https://featicompsociety.netlify.app/",
+		tags: ["React", "Next.js", "CSS"],
+		image: "/images/projects/feati-logo.svg"
+	}
+];
 
 export default function ProjectsSection() {
-	const [repos, setRepos] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
-
-	useEffect(() => {
-		fetch(GITHUB_API)
-			.then((res) => res.json())
-			.then((data) => {
-				if (Array.isArray(data)) {
-					// Sort by stargazers_count desc, take top 6
-					const sorted = data
-						.filter((repo) => !repo.fork && !repo.private)
-						.sort((a, b) => b.stargazers_count - a.stargazers_count)
-						.slice(0, 6);
-					setRepos(sorted);
-				} else {
-					setError("Failed to fetch repositories.");
-				}
-				setLoading(false);
-			})
-			.catch(() => {
-				setError("Failed to fetch repositories.");
-				setLoading(false);
-			});
-	}, []);
-
 	return (
 		<section className="projects-section" id="projects">
 			<h2>Projects</h2>
 			<p style={{ textAlign: "center", color: "#555", marginBottom: 32 }}>
-				Some of my favorite work and open source contributions.
-			</p>		<div className="projects-list" style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-			{loading && <p>Loading projects from GitHub...</p>}
-			{error && <p style={{ color: "red" }}>{error}</p>}
-			{!loading && !error && repos.length > 0 && (
-				<div style={{ width: "100%", maxWidth: "450px" }}>
-					<Carousel itemWidth={400}>
-						{repos.map((repo) => (
-							<div key={repo.id} style={{ padding: "0 10px" }}>
-								<ProjectCard
-									title={repo.name}
-									description={repo.description || "No description"}
-									link={repo.html_url}
-									tags={repo.topics || []}
-									image={"/images/No-Logo-Sample.png"}
-								/>
-							</div>
-						))}
-					</Carousel>
-				</div>
-			)}
-			{!loading && !error && repos.length === 0 && <p>No public repositories found.</p>}
-		</div>
-		</section>
+				Some of my favorite work and web applications.
+			</p>
+			<div className="projects-list">
+				{projects.map((project) => (
+					<ProjectCard
+						key={project.id}
+						title={project.title}
+						description={project.description}
+						link={project.link}
+						tags={project.tags}
+						image={project.image}
+					/>
+				))}
+			</div>		</section>
 	);
 }

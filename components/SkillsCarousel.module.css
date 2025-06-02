@@ -1,0 +1,121 @@
+.skillsCarousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 2rem 0;
+  margin: 2rem 0;
+}
+
+.skillsTrack {
+  display: flex;
+  animation: scroll 20s linear infinite;
+  gap: 2rem;
+  width: calc(200% + 4rem); /* Account for gap */
+}
+
+.skillsTrack:hover {
+  animation-play-state: paused;
+}
+
+.skillCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  height: 160px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  gap: 1rem;
+}
+
+.skillCard:hover {
+  transform: scale(1.1);
+  border-color: var(--primary);
+  box-shadow: 0 8px 25px rgba(79, 140, 255, 0.2);
+}
+
+.skillLogo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.skillCard:hover .skillLogo {
+  transform: scale(1.1);
+}
+
+.skillName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.skillCard:hover .skillName {
+  color: var(--primary);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .skillCard {
+    min-width: 120px;
+    height: 140px;
+    padding: 1rem;
+  }
+  
+  .skillLogo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .skillName {
+    font-size: 0.8rem;
+  }
+  
+  .skillsTrack {
+    animation-duration: 25s;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skillCard {
+    min-width: 100px;
+    height: 120px;
+    padding: 0.8rem;
+  }
+  
+  .skillLogo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .skillName {
+    font-size: 0.75rem;
+  }
+  
+  .skillsTrack {
+    animation-duration: 30s;
+    gap: 1rem;
+  }
+}

@@ -5,17 +5,21 @@ export default function ProjectCard({ title, description, link, image, tags }) {
 		<div className="project-card">
 			{image && (
 				<div className="project-image-wrapper">
-					<Image
+					<img
 						src={image}
-						alt={title}
-						width={400}
-						height={220}
+						alt={`${title} logo`}
 						className="project-image"
 						style={{
 							borderRadius: 10,
-							objectFit: "cover",
+							objectFit: "contain",
 							width: "100%",
 							height: 180,
+							backgroundColor: "#f8f9fa",
+							padding: "20px",
+						}}
+						onError={(e) => {
+							console.log(`Failed to load image: ${image}`);
+							e.target.style.display = 'none';
 						}}
 					/>
 				</div>
