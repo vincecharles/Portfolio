@@ -38,26 +38,28 @@ export default function ProjectsSection() {
 			<h2>Projects</h2>
 			<p style={{ textAlign: "center", color: "#555", marginBottom: 32 }}>
 				Some of my favorite work and open source contributions.
-			</p>
-			<div className="projects-list" style={{ display: "flex", justifyContent: "center" }}>
-				{loading && <p>Loading projects from GitHub...</p>}
-				{error && <p style={{ color: "red" }}>{error}</p>}
-				{!loading && !error && repos.length > 0 && (
+			</p>		<div className="projects-list" style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+			{loading && <p>Loading projects from GitHub...</p>}
+			{error && <p style={{ color: "red" }}>{error}</p>}
+			{!loading && !error && repos.length > 0 && (
+				<div style={{ width: "100%", maxWidth: "450px" }}>
 					<Carousel itemWidth={400}>
 						{repos.map((repo) => (
-							<ProjectCard
-								key={repo.id}
-								title={repo.name}
-								description={repo.description || "No description"}
-								link={repo.html_url}
-								tags={repo.topics || []}
-								image={"/images/No-Logo-Sample.png"}
-							/>
+							<div key={repo.id} style={{ padding: "0 10px" }}>
+								<ProjectCard
+									title={repo.name}
+									description={repo.description || "No description"}
+									link={repo.html_url}
+									tags={repo.topics || []}
+									image={"/images/No-Logo-Sample.png"}
+								/>
+							</div>
 						))}
 					</Carousel>
-				)}
-				{!loading && !error && repos.length === 0 && <p>No public repositories found.</p>}
-			</div>
+				</div>
+			)}
+			{!loading && !error && repos.length === 0 && <p>No public repositories found.</p>}
+		</div>
 		</section>
 	);
 }

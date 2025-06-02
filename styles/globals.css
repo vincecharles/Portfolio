@@ -502,7 +502,7 @@ section:not(:first-child)::before {
 	display: flex;
 	flex-direction: column;
 	font-weight: 500;
-	color: #444;
+	color: var(--text);
 	gap: 0.5rem;
 }
 
@@ -512,8 +512,16 @@ section:not(:first-child)::before {
 	border: 1px solid var(--border);
 	border-radius: 6px;
 	font-size: 1rem;
-	background: #f5f7fa;
+	background: var(--bg);
+	color: var(--text);
 	resize: vertical;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus {
+	outline: none;
+	border-color: var(--primary);
+	box-shadow: 0 0 0 2px rgba(79, 140, 255, 0.1);
 }
 
 .contact-section button {
@@ -528,8 +536,24 @@ section:not(:first-child)::before {
 	transition: background 0.2s;
 }
 
-.contact-section button:hover {
+.contact-section button:hover:not(:disabled) {
 	background: #155ab6;
+}
+
+.contact-section button:disabled {
+	background: #666;
+	cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+	.contact-section {
+		padding: 2rem 0.5rem;
+	}
+	
+	.contact-section form {
+		padding: 1.5rem 1rem;
+		gap: 1rem;
+	}
 }
 
 @media (max-width: 600px) {

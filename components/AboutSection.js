@@ -48,55 +48,56 @@ export default function AboutSection() {
 						</div>
 					</div>
 				</div>
-				<h3 className="about-skills-title">Skills</h3>
-				<div className="skills-carousel-wrapper">
-					<Carousel itemWidth={200}>
-						<div className="skills-slide">
-							<img
-								src="/images/skills/html-5-svgrepo-com.svg"
-								alt="HTML5"
-								className="skill-logo"
-							/>
-							<img
-								src="/images/skills/css-3-svgrepo-com.svg"
-								alt="CSS3"
-								className="skill-logo"
-							/>
-							<img
-								src="/images/skills/javascript-logo-svgrepo-com.svg"
-								alt="JavaScript"
-								className="skill-logo"
-							/>
-							<img
-								src="/images/skills/php-svgrepo-com.svg"
-								alt="PHP"
-								className="skill-logo"
-							/>
-						</div>
-						<div className="skills-slide">
-							<img
-								src="/images/skills/nextjs-svgrepo-com.svg"
-								alt="Next.js"
-								className="skill-logo"
-							/>
-							<img
-								src="/images/skills/laravel-svgrepo-com.svg"
-								alt="Laravel"
-								className="skill-logo"
-							/>
-							<img
-								src="/images/skills/python-svgrepo-com.svg"
-								alt="Python"
-								className="skill-logo"
-							/>
-							<img
-								src="/images/skills/react-svgrepo-com.svg"
-								alt="React"
-								className="skill-logo"
-							/>
-						</div>
-					</Carousel>
-				</div>
+				<h3 className="about-skills-title">Skills</h3>			<div className="skills-carousel-wrapper">
+				<Carousel itemWidth={300}>
+					<div className="skills-slide">
+						<img
+							src="/images/skills/html-5-svgrepo-com.svg"
+							alt="HTML5"
+							className="skill-logo"
+						/>
+						<img
+							src="/images/skills/css-3-svgrepo-com.svg"
+							alt="CSS3"
+							className="skill-logo"
+						/>
+						<img
+							src="/images/skills/javascript-logo-svgrepo-com.svg"
+							alt="JavaScript"
+							className="skill-logo"
+						/>
+					</div>
+					<div className="skills-slide">
+						<img
+							src="/images/skills/react-svgrepo-com.svg"
+							alt="React"
+							className="skill-logo"
+						/>
+						<img
+							src="/images/skills/nextjs-svgrepo-com.svg"
+							alt="Next.js"
+							className="skill-logo"
+						/>
+						<img
+							src="/images/skills/php-svgrepo-com.svg"
+							alt="PHP"
+							className="skill-logo"
+						/>
+					</div>
+					<div className="skills-slide">
+						<img
+							src="/images/skills/laravel-svgrepo-com.svg"
+							alt="Laravel"
+							className="skill-logo"
+						/>
+						<img
+							src="/images/skills/python-svgrepo-com.svg"
+							alt="Python"
+							className="skill-logo"
+						/>
+					</div>
+				</Carousel>
+			</div>
 			</div>
 		</section>
 	);
