@@ -1,0 +1,33 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a73e8"/>
+      <stop offset="50%" style="stop-color:#4f8cff"/>
+      <stop offset="100%" style="stop-color:#1a73e8"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Main Circle -->
+  <circle cx="100" cy="100" r="90" fill="url(#logo-gradient)" stroke="#fff" stroke-width="6" filter="url(#glow)"/>
+  
+  <!-- Letter V -->
+  <path d="M60 60 L100 140 L140 60" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Letter C -->
+  <path d="M140 70 Q160 100 140 130" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
+  
+  <!-- Accent dots -->
+  <circle cx="70" cy="70" r="4" fill="#fff" opacity="0.8"/>
+  <circle cx="130" cy="70" r="4" fill="#fff" opacity="0.8"/>
+  <circle cx="100" cy="150" r="4" fill="#fff" opacity="0.8"/>
+  
+  <!-- Inner glow effect -->
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#fff" stroke-width="2" opacity="0.3"/>
+</svg>

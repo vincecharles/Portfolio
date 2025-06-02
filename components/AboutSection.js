@@ -1,6 +1,6 @@
 "use client";
 
-import Carousel from "./Carousel";
+import SkillsCarousel from "./SkillsCarousel";
 
 export default function AboutSection() {
 	return (
@@ -18,86 +18,71 @@ export default function AboutSection() {
 					</li>
 				</ul>
 			</div>
-			<div className="about-logo" style={{ display: "flex", justifyContent: "center", marginBottom: 24 }}>
-				<img
-					src="/images/Me.jpg"
-					alt="Vince Charles de Guzman"
-					style={{
-						width: 120,
-						height: 120,
-						borderRadius: "50%",
-						objectFit: "cover",
-						border: "3px solid #4f8cff",
-						boxShadow: "0 2px 12px rgba(26, 115, 232, 0.1)",
-						background: "#fff",
-					}}
-				/>
-			</div>
+			
 			<div className="about-content">
-				<h2>About Me</h2>
-				<p className="about-intro">
-					My name is Vince Charles de Guzman. I am a Full Stack Developer. From
-					Manila, Philippines.
-				</p>
-				<div className="about-timeline">
-					<div className="timeline-item">
-						<div className="timeline-dot" />
-						<div>
-							<h4>2022-Present</h4>
-							<p>B.S. in Information Technology,FEATI University</p>
+				<div className="about-me-section">
+					<h2>About Me</h2>
+					<p className="about-intro">
+						My name is Vince Charles de Guzman. I am a Full Stack Developer from
+						Manila, Philippines. I'm passionate about creating innovative web solutions
+						and constantly learning new technologies.
+					</p>
+				</div>
+
+				<div className="education-section">
+					<h3>Education</h3>
+					<div className="about-timeline">
+						<div className="timeline-item">
+							<div className="timeline-date">
+								<span>2022 - Present</span>
+							</div>
+							<div className="timeline-content">
+								<h4>Bachelor of Science in Information Technology</h4>
+								<p>FEATI University</p>
+								<p className="timeline-description">
+									Currently pursuing my degree with focus on software development,
+									database management, and web technologies.
+								</p>
+							</div>
+						</div>
+						
+						<div className="timeline-item">
+							<div className="timeline-date">
+								<span>2018 - 2020</span>
+							</div>
+							<div className="timeline-content">
+								<h4>Senior High School - STEM</h4>
+								<p>Emilio Aguinaldo College</p>
+								<p className="timeline-description">
+									Completed senior high school with a specialization in Science,
+									Technology, Engineering, and Mathematics (STEM).
+								</p>
+							</div>
+						</div>
+						
+						<div className="timeline-item">
+							<div className="timeline-date">
+								<span>2014-2018</span>
+							</div>
+							<div className="timeline-content">
+								<h4>Junior High School</h4>
+								<p>Araullo High School</p>
+								<p className="timeline-description">
+									Completed junior high school with a strong foundation in
+									mathematics, science, and computer studies.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
-				<h3 className="about-skills-title">Skills</h3>			<div className="skills-carousel-wrapper">
-				<Carousel itemWidth={300}>
-					<div className="skills-slide">
-						<img
-							src="/images/skills/html-5-svgrepo-com.svg"
-							alt="HTML5"
-							className="skill-logo"
-						/>
-						<img
-							src="/images/skills/css-3-svgrepo-com.svg"
-							alt="CSS3"
-							className="skill-logo"
-						/>
-						<img
-							src="/images/skills/javascript-logo-svgrepo-com.svg"
-							alt="JavaScript"
-							className="skill-logo"
-						/>
-					</div>
-					<div className="skills-slide">
-						<img
-							src="/images/skills/react-svgrepo-com.svg"
-							alt="React"
-							className="skill-logo"
-						/>
-						<img
-							src="/images/skills/nextjs-svgrepo-com.svg"
-							alt="Next.js"
-							className="skill-logo"
-						/>
-						<img
-							src="/images/skills/php-svgrepo-com.svg"
-							alt="PHP"
-							className="skill-logo"
-						/>
-					</div>
-					<div className="skills-slide">
-						<img
-							src="/images/skills/laravel-svgrepo-com.svg"
-							alt="Laravel"
-							className="skill-logo"
-						/>
-						<img
-							src="/images/skills/python-svgrepo-com.svg"
-							alt="Python"
-							className="skill-logo"
-						/>
-					</div>
-				</Carousel>
-			</div>
+
+				<div className="skills-section">
+					<h3 className="about-skills-title">Technical Skills</h3>
+					<p className="skills-description">
+						Technologies and frameworks I work with
+					</p>
+					<SkillsCarousel />
+				</div>
 			</div>
 		</section>
 	);

@@ -18,8 +18,7 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <section className="hero center-content" id="hero" style={{
+  return (    <section className="hero center-content" id="hero" style={{
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
@@ -27,7 +26,7 @@ export default function Hero() {
       alignItems: 'center',
       position: 'relative',
       overflow: 'hidden',
-      background: 'linear-gradient(120deg, #e3f0ff 0%, #f9f9f9 100%)',
+      background: 'linear-gradient(120deg, #0a0a0a 0%, #151515 50%, #0d1117 100%)',
     }}>
       {/* Background effect */}
       <div style={{
@@ -36,12 +35,11 @@ export default function Hero() {
         left: '-20%',
         width: '140%',
         height: '140%',
-        background: 'radial-gradient(circle at 60% 40%, #1a73e8 0%, transparent 60%)',
-        opacity: 0.08,
+        background: 'radial-gradient(circle at 60% 40%, #1a2332 0%, transparent 70%)',
+        opacity: 0.4,
         zIndex: 0,
-      }} />
-      <motion.img
-        src="/public/images/Me.jpg"
+      }} /><motion.img
+        src="/images/Me.jpg"
         alt="Vince Charles de Guzman"
         className="profile-img"
         initial={{ scale: 0.8, opacity: 0 }}
@@ -52,9 +50,8 @@ export default function Hero() {
           height: 180,
           borderRadius: '50%',
           objectFit: 'cover',
-          marginBottom: 32,
-          border: '5px solid #1a73e8',
-          boxShadow: '0 8px 32px rgba(26,115,232,0.15)',
+          marginBottom: 32,          border: '5px solid #4f9cf9',
+          boxShadow: '0 8px 32px rgba(79,156,249,0.3)',
           zIndex: 1,
         }}
       />
@@ -62,13 +59,13 @@ export default function Hero() {
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.7 }}
-        style={{ fontSize: '3rem', fontWeight: 800, color: '#1a73e8', zIndex: 1 }}
+        style={{ fontSize: '3rem', fontWeight: 800, color: '#ffffff', zIndex: 1 }}
       >
         Vince Charles de Guzman
       </motion.h1>
       <motion.p
         className="hero-subtitle"
-        style={{ minHeight: 36, fontSize: '1.5rem', color: '#333', margin: '16px 0', zIndex: 1 }}
+        style={{ minHeight: 36, fontSize: '1.5rem', color: '#e0e0e0', margin: '16px 0', zIndex: 1 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.7 }}
