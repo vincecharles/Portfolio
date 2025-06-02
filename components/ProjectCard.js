@@ -1,9 +1,18 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function ProjectCard({ title, description, link, image, tags }) {
+	const [imageError, setImageError] = useState(false);
+
+	const handleImageError = () => {
+		console.log(`Failed to load image: ${image}`);
+		setImageError(true);
+	};
+
 	return (
 		<div className="project-card">
-			{image && (
+			{image && !imageError && (
 				<div className="project-image-wrapper">
 					<img
 						src={image}
@@ -17,10 +26,7 @@ export default function ProjectCard({ title, description, link, image, tags }) {
 							backgroundColor: "#f8f9fa",
 							padding: "20px",
 						}}
-						onError={(e) => {
-							console.log(`Failed to load image: ${image}`);
-							e.target.style.display = 'none';
-						}}
+						onError={handleImageError}
 					/>
 				</div>
 			)}

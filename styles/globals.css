@@ -146,9 +146,9 @@ nav.navbar {
 	margin: 0 auto;
 	padding: 1rem 2rem;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
-	gap: 3rem;
+	gap: 4rem;
 }
 
 .navbar-brand {
@@ -159,7 +159,7 @@ nav.navbar {
 	display: flex;
 	align-items: center;
 	gap: 0.2rem;
-	margin-right: auto;
+	margin-right: 0;
 	transition: all 0.3s ease;
 }
 
@@ -242,13 +242,15 @@ nav.navbar {
 }
 
 /* Mobile Navbar */
-@media (max-width: 768px) {	.navbar-container {
+@media (max-width: 768px) {
+	.navbar-container {
 		padding: 1rem;
 		gap: 2rem;
+		justify-content: space-between;
 	}
 
 	.navbar-brand {
-		margin-right: auto;
+		margin-right: 0;
 	}
 
 	.navbar-toggle {
@@ -550,6 +552,11 @@ section:not(:first-child)::before {
 	margin-bottom: 0;
 }
 
+/* Make sure all text in timeline content is white including school names */
+.timeline-content h4 + p {
+	color: #ffffff !important;
+}
+
 .skills-section {
 	text-align: center;
 }
@@ -583,6 +590,11 @@ section:not(:first-child)::before {
 .timeline-content p,
 .timeline-content span,
 .timeline-content div {
+	color: #ffffff !important;
+}
+
+/* Make sure all text in timeline content is white including school names */
+.timeline-content h4 + p {
 	color: #ffffff !important;
 }
 
