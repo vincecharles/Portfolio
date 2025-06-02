@@ -1,0 +1,36 @@
+.carousel {
+  position: relative;
+  width: 400px;
+  margin: 40px auto;
+  overflow: hidden;
+}
+.carouselContainer {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+.carouselItem {
+  min-width: 400px;
+  height: 200px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border: 1px solid #ccc;
+}
+.carouselBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 2;
+}
+.carouselBtnPrev {
+  left: 10px;
+}
+.carouselBtnNext {
+  right: 10px;
+}
