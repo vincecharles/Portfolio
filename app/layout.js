@@ -2,22 +2,21 @@ import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import VantaBackground from '../components/VantaBackground';
+import Enhanced3DBackground from '../components/Enhanced3DBackground';
 
 export const metadata = {
   title: "Vince's Portfolio",
   description: "Portfolio of Vince Charles de Guzman"
 };
 
-export default function RootLayout({ children }) {
-  return (
+export default function RootLayout({ children }) {  return (
     <html lang="en">
       <body>
-        <VantaBackground>
+        <Enhanced3DBackground>
           <Navbar />
           {children}
           <Footer />
-        </VantaBackground>
+        </Enhanced3DBackground>
       </body>
     </html>
   );
