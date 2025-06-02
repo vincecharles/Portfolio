@@ -51,7 +51,7 @@ export default function ProjectsSection() {
 								description={repo.description || "No description"}
 								link={repo.html_url}
 								tags={repo.topics || []}
-								image={"/public/images/No-Logo-Sample.png"}
+								image={"/images/No-Logo-Sample.png"}
 							/>
 						))}
 					</Carousel>
