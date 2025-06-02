@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import formcarry from "@formcarry/formcarry-js";
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -47,6 +46,8 @@ export default function ContactSection() {
             flexDirection: "column",
             gap: 16,
           }}
+          action="https://formcarry.com/s/LhmDo0SwOHr"
+          method="POST"
         >
           <label>
             Name
@@ -60,6 +61,8 @@ export default function ContactSection() {
                 border: "1px solid #ccc",
                 marginBottom: 8,
                 fontSize: 16,
+                width: "100%",
+                boxSizing: "border-box",
               }}
             />
           </label>
@@ -75,6 +78,8 @@ export default function ContactSection() {
                 border: "1px solid #ccc",
                 marginBottom: 8,
                 fontSize: 16,
+                width: "100%",
+                boxSizing: "border-box",
               }}
             />
           </label>
@@ -89,6 +94,9 @@ export default function ContactSection() {
                 border: "1px solid #ccc",
                 minHeight: 100,
                 fontSize: 16,
+                width: "100%",
+                boxSizing: "border-box",
+                resize: "vertical",
               }}
             />
           </label>
@@ -103,6 +111,10 @@ export default function ContactSection() {
               fontSize: 16,
               border: "none",
               marginTop: 8,
+              width: "100%",
+              boxSizing: "border-box",
+              cursor: "pointer",
+              transition: "background 0.2s",
             }}
           >
             Send
@@ -114,6 +126,14 @@ export default function ContactSection() {
       )}
       {/* Formcarry.js CDN script for form integration */}
       <script src="https://carrier.formcarry.com/js/v1.js"></script>
+      <style jsx>{`
+        @media (max-width: 600px) {
+          .contact-form {
+            padding: 1rem !important;
+            gap: 12px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
