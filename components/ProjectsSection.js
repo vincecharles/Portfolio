@@ -1,4 +1,7 @@
+"use client";
 import ProjectCard from "./ProjectCard";
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const projects = [
 	{
@@ -36,23 +39,60 @@ const projects = [
 ];
 
 export default function ProjectsSection() {
+	const ref = useRef(null);
+	const isInView = useInView(ref, { once: true, threshold: 0.2 });
+
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.15
+			}
+		}
+	};
+
+	const itemVariants = {
+		hidden: { y: 40, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: {
+				duration: 0.6,
+				ease: "easeOut"
+			}
+		}
+	};
+
 	return (
-		<section className="projects-section" id="projects">
-			<h2>Projects</h2>
-			<p style={{ textAlign: "center", color: "#555", marginBottom: 32 }}>
+		<motion.section 
+			ref={ref}
+			className="projects-section" 
+			id="projects"
+			variants={containerVariants}
+			initial="hidden"
+			animate={isInView ? "visible" : "hidden"}
+		>
+			<motion.h2 variants={itemVariants}>Projects</motion.h2>
+			<motion.p 
+				variants={itemVariants}
+				style={{ textAlign: "center", color: "#cccccc", marginBottom: 32, fontSize: "1.1rem" }}
+			>
 				Some of my favorite work and web applications.
-			</p>
-			<div className="projects-list">
-				{projects.map((project) => (
-					<ProjectCard
-						key={project.id}
-						title={project.title}
-						description={project.description}
-						link={project.link}
-						tags={project.tags}
-						image={project.image}
-					/>
+			</motion.p>
+			<motion.div className="projects-list" variants={containerVariants}>
+				{projects.map((project, index) => (
+					<motion.div key={project.id} variants={itemVariants}>
+						<ProjectCard
+							title={project.title}
+							description={project.description}
+							link={project.link}
+							tags={project.tags}
+							image={project.image}
+						/>
+					</motion.div>
 				))}
-			</div>		</section>
+			</motion.div>
+		</motion.section>
 	);
 }

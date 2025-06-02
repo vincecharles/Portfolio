@@ -5,19 +5,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function WelcomeScreen({ onComplete = () => {} }) {
   const [showLogo, setShowLogo] = useState(true);
   const [showText, setShowText] = useState(false);
-
-  useEffect(() => {    // Show logo for 2 seconds
+  useEffect(() => {
+    // Show logo for 1.5 seconds
     const logoTimer = setTimeout(() => {
       setShowText(true);
-    }, 1500);
+    }, 1000);
     
-    // Hide everything and show main app after 4 seconds
+    // Hide everything and show main app after 3 seconds
     const completeTimer = setTimeout(() => {
       setShowLogo(false);
       if (onComplete) {
-        setTimeout(onComplete, 800); // Wait for fade out animation
+        setTimeout(onComplete, 600); // Wait for fade out animation
       }
-    }, 3500);
+    }, 2800);
 
     return () => {
       clearTimeout(logoTimer);
@@ -31,14 +31,13 @@ export default function WelcomeScreen({ onComplete = () => {} }) {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-          style={{
+          transition={{ duration: 0.8 }}          style={{
             position: 'fixed',
             top: 0,
             left: 0,
             width: '100vw',
             height: '100vh',
-            backgroundColor: '#0a0a0a',
+            background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -47,12 +46,12 @@ export default function WelcomeScreen({ onComplete = () => {} }) {
             overflow: 'hidden'
           }}
         >
-          {/* Background particles */}
+          {/* Simple background glow */}
           <div style={{
             position: 'absolute',
             width: '100%',
             height: '100%',
-            background: 'radial-gradient(circle at 50% 50%, rgba(26, 115, 232, 0.1) 0%, transparent 50%)',
+            background: 'radial-gradient(circle at 50% 50%, rgba(79, 140, 255, 0.15) 0%, transparent 70%)',
           }} />
           
           {/* Animated background grid */}

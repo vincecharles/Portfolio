@@ -1,11 +1,45 @@
 "use client";
 
 import SkillsCarousel from "./SkillsCarousel";
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 export default function AboutSection() {
+	const ref = useRef(null);
+	const isInView = useInView(ref, { once: true, threshold: 0.3 });
+
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.2
+			}
+		}
+	};
+
+	const itemVariants = {
+		hidden: { y: 30, opacity: 0 },
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: {
+				duration: 0.6,
+				ease: "easeOut"
+			}
+		}
+	};
+
 	return (
-		<section className="about-section" id="about">
-			<div className="certifications-card">
+		<motion.section 
+			ref={ref}
+			className="about-section" 
+			id="about"
+			variants={containerVariants}
+			initial="hidden"
+			animate={isInView ? "visible" : "hidden"}
+		>
+			<motion.div className="certifications-card" variants={itemVariants}>
 				<h3>Certifications</h3>
 				<ul className="certifications-list">
 					<li>
@@ -17,19 +51,19 @@ export default function AboutSection() {
 						</a>
 					</li>
 				</ul>
-			</div>
+			</motion.div>
 			
 			<div className="about-content">
-				<div className="about-me-section">
+				<motion.div className="about-me-section" variants={itemVariants}>
 					<h2>About Me</h2>
 					<p className="about-intro">
 						My name is Vince Charles de Guzman. I am a Full Stack Developer from
 						Manila, Philippines. I'm passionate about creating innovative web solutions
 						and constantly learning new technologies.
 					</p>
-				</div>
+				</motion.div>
 
-				<div className="education-section">
+				<motion.div className="education-section" variants={itemVariants}>
 					<h3>Education</h3>
 					<div className="about-timeline">
 						<div className="timeline-item">
@@ -74,16 +108,16 @@ export default function AboutSection() {
 							</div>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 
-				<div className="skills-section">
+				<motion.div className="skills-section" variants={itemVariants}>
 					<h3 className="about-skills-title">Technical Skills</h3>
 					<p className="skills-description">
 						Technologies and frameworks I work with
 					</p>
 					<SkillsCarousel />
-				</div>
+				</motion.div>
 			</div>
-		</section>
+		</motion.section>
 	);
 }
