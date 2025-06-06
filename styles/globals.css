@@ -977,6 +977,33 @@ footer.footer {
 	font-size: 1rem;
 }
 
+.footer-bottom {
+	margin-bottom: 1.5rem;
+}
+
+.footer-socials {
+	display: flex;
+	gap: 1.5rem;
+	justify-content: center;
+	margin-top: 1rem;
+}
+
+.footer-socials a {
+	color: var(--primary);
+	transition: color 0.2s, transform 0.2s;
+	padding: 0.5rem;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.footer-socials a:hover {
+	color: #155ab6;
+	transform: scale(1.15);
+	background: rgba(79, 140, 255, 0.1);
+}
+
 /* Section Spacing */
 .hero,
 .about-section,
