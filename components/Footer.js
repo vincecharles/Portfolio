@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaCode } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function Footer() {
 	return (
