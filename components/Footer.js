@@ -11,6 +11,16 @@ export default function Footer() {
 					<p>Made with <FaHeart className="heart-icon" /> and <FaCode className="code-icon" /></p>
 				</div>
 			</div>
+			  <motion.div
+				className="hero-socials"
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ delay: 0.7, duration: 0.6 }}
+				style={{ zIndex: 1 }}
+			  >          <a href="https://github.com/vincecharles" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub size={22} /></a>
+				  <a href="https://www.linkedin.com/in/vince-charles-40882b28a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedin size={22} /></a>
+				  <a href="mailto:vincecharlesdeguzman@outlook.com" aria-label="Email"><FaEnvelope size={22} /></a>
+			  </motion.div>
 		</footer>
 	);
 }

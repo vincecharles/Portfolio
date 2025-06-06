@@ -26,9 +26,9 @@ export default function Hero() {
       alignItems: 'center',
       position: 'relative',
       overflow: 'hidden',
-      background: 'transparent', // Let the 3D background show through
+      background: 'transparent', 
     }}>
-      {/* Remove the old background effect since we have 3D background */}      <motion.img
+      {}      <motion.img
         src="/images/Me.jpg"
         alt="Vince Charles de Guzman"
         className="profile-img"
