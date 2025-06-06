@@ -1,5 +1,7 @@
+"use strict";
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+var nextConfig = {
   reactStrictMode: true,
   images: {
     unoptimized: true
@@ -9,5 +11,4 @@ const nextConfig = {
     esmExternals: 'loose'
   }
 };
-
 module.exports = nextConfig;
