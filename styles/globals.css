@@ -1092,165 +1092,207 @@ footer.footer {
 	color: var(--text-dark);
 }
 
-/* Enhanced paragraph styles for better contrast */
-.section-light p {
-	color: var(--text-light) !important;
+/* GitHub Stats */
+.github-stats {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	margin: 2rem 0 3rem 0;
+	padding: 1.5rem;
+	background: rgba(79, 140, 255, 0.05);
+	border-radius: 12px;
+	border: 1px solid rgba(79, 140, 255, 0.2);
 }
 
-.section-dark p {
-	color: var(--text-dark) !important;
-}
-
-/* Ensure proper paragraph spacing and readability */
-p {
-	margin-bottom: 1rem;
-	line-height: 1.7;
-	font-size: 1rem;
-}
-
-/* Override any conflicting styles */
-.github-section p,
-.projects-section p,
-.about-section p,
-.contact-section p {
-	color: inherit;
-}
-
-@media (max-width: 768px) {
-	.github-section .container {
-		padding: 0 1rem;
-	}
-	
-	.github-section h2 {
-		font-size: 2rem;
-	}
-	
-	.section-description {
-		font-size: 1rem;
-		margin-bottom: 2rem;
-	}
-}
-
-/* Footer Icon Styles */
-.heart-icon {
-	color: #ff6b6b;
-	margin: 0 4px;
-}
-
-.code-icon {
-	color: #4f8cff;
-	margin: 0 4px;
-}
-
-/* Section Transition Effects */
-.section-dark,
-.section-light {
-	position: relative;
-	transition: all 0.6s ease-in-out;
-}
-
-/* Section divider waves */
-.section-light::after {
-	content: '';
-	position: absolute;
-	bottom: -1px;
-	left: 0;
-	width: 100%;
-	height: 50px;
-	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z' fill='%23181c24'/%3E%3C/svg%3E") center bottom;
-	background-size: cover;
-	pointer-events: none;
-	z-index: 1;
-}
-
-.section-dark::after {
-	content: '';
-	position: absolute;
-	bottom: -1px;
-	left: 0;
-	width: 100%;
-	height: 50px;
-	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z' fill='%23f8f9fa'/%3E%3C/svg%3E") center bottom;
-	background-size: cover;
-	pointer-events: none;
-	z-index: 1;
-}
-
-/* Ensure the last section doesn't have a wave */
-.section-dark:last-child::after,
-.section-light:last-child::after {
-	display: none;
-}
-
-/* GitHub Section Styles */
-.github-section {
-	padding: 4rem 0;
-}
-
-.github-section .container {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 0 2rem;
-}
-
-.github-section h2 {
+.stat-item {
 	text-align: center;
-	font-size: 2.5rem;
-	margin-bottom: 1rem;
-	color: var(--text-light);
+	min-width: 80px;
 }
 
-.section-dark .github-section h2 {
-	color: var(--text-dark);
+.stat-number {
+	display: block;
+	font-size: 1.8rem;
+	font-weight: bold;
+	color: var(--primary);
+	margin-bottom: 0.25rem;
 }
 
-.section-description {
-	text-align: center;
-	font-size: 1.1rem;
-	margin-bottom: 3rem;
+.stat-label {
+	display: block;
+	font-size: 0.9rem;
 	color: var(--text-light);
 	opacity: 0.8;
-	max-width: 600px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
-.section-dark .section-description {
+.section-dark .stat-label {
 	color: var(--text-dark);
 }
 
-.loading-text {
-	text-align: center;
+/* GitHub Controls */
+.github-controls {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
+}
+
+.sort-controls {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.sort-controls label {
 	color: var(--text-light);
-	font-size: 1.1rem;
-	margin: 2rem 0;
+	font-weight: 500;
 }
 
-.section-dark .loading-text {
+.section-dark .sort-controls label {
 	color: var(--text-dark);
 }
 
-.error-text {
-	text-align: center;
-	color: #dc3545;
-	font-size: 1.1rem;
-	margin: 2rem 0;
-	background: rgba(220, 53, 69, 0.1);
-	padding: 1rem;
+.sort-select {
+	padding: 0.5rem 1rem;
+	border: 1px solid rgba(79, 140, 255, 0.3);
 	border-radius: 8px;
-	border: 1px solid rgba(220, 53, 69, 0.3);
-}
-
-.no-repos-text {
-	text-align: center;
+	background: var(--card-bg);
 	color: var(--text-light);
-	font-size: 1.1rem;
-	margin: 2rem 0;
-	opacity: 0.7;
+	font-size: 0.9rem;
+	cursor: pointer;
+	transition: all 0.2s ease;
 }
 
-.section-dark .no-repos-text {
+.sort-select:focus {
+	outline: none;
+	border-color: var(--primary);
+	box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.1);
+}
+
+.sort-select:hover {
+	border-color: var(--primary);
+}
+
+/* GitHub Profile Link */
+.github-profile-link {
+	text-align: center;
+	margin-top: 3rem;
+}
+
+.github-profile-button {
+	display: inline-block;
+	padding: 0.75rem 1.5rem;
+	background: var(--primary);
+	color: white;
+	text-decoration: none;
+	border-radius: 8px;
+	font-weight: 500;
+	transition: all 0.2s ease;
+}
+
+.github-profile-button:hover {
+	background: #4078c0;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(79, 140, 255, 0.3);
+}
+
+/* Enhanced Project Card GitHub Stats */
+.github-stats-card {
+	margin-top: 1rem;
+	padding: 1rem;
+	background: rgba(79, 140, 255, 0.05);
+	border-radius: 8px;
+	border: 1px solid rgba(79, 140, 255, 0.1);
+}
+
+.github-stat-row {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-bottom: 0.75rem;
+}
+
+.github-stat {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-size: 0.85rem;
+}
+
+.stat-icon {
+	font-size: 0.9rem;
+}
+
+.stat-value {
+	color: var(--text-light);
+	font-weight: 500;
+}
+
+.section-dark .stat-value {
 	color: var(--text-dark);
+}
+
+.github-meta,
+.github-license,
+.github-archived {
+	margin-top: 0.5rem;
+	padding-top: 0.5rem;
+	border-top: 1px solid rgba(79, 140, 255, 0.1);
+}
+
+.github-meta small,
+.github-license small,
+.github-archived small {
+	color: var(--text-light);
+	opacity: 0.7;
+	font-size: 0.8rem;
+}
+
+.section-dark .github-meta small,
+.section-dark .github-license small,
+.section-dark .github-archived small {
+	color: var(--text-dark);
+}
+
+.github-archived small {
+	color: #ffa500 !important;
+	font-weight: 500;
+}
+
+/* Responsive GitHub Stats */
+@media (max-width: 768px) {
+	.github-stats {
+		gap: 1rem;
+		padding: 1rem;
+	}
+	
+	.stat-number {
+		font-size: 1.5rem;
+	}
+	
+	.github-stat-row {
+		justify-content: center;
+		gap: 1rem;
+	}
+	
+	.github-controls {
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.github-stats {
+		flex-direction: column;
+		gap: 1rem;
+		text-align: center;
+	}
+	
+	.github-stat-row {
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
 }
 
 /* Enhanced paragraph styles for better contrast */
@@ -1341,4 +1383,274 @@ p {
 .section-dark:last-child::after,
 .section-light:last-child::after {
 	display: none;
+}
+
+/* Resume Page Styles */
+.resume-page {
+	min-height: 100vh;
+	background: linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
+	padding: 80px 0 40px;
+	position: relative;
+}
+
+.resume-page::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: 
+		radial-gradient(circle at 25px 25px, rgba(79, 140, 255, 0.1) 2px, transparent 0),
+		radial-gradient(circle at 75px 75px, rgba(26, 115, 232, 0.05) 1px, transparent 0);
+	background-size: 100px 100px;
+	opacity: 0.3;
+	pointer-events: none;
+	z-index: 0;
+}
+
+.resume-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+	position: relative;
+	z-index: 1;
+}
+
+.resume-header {
+	text-align: center;
+	margin-bottom: 3rem;
+	animation: fadeInUp 0.8s ease-out;
+}
+
+.resume-title {
+	font-size: 3rem;
+	font-weight: 800;
+	color: #fff;
+	margin-bottom: 0.5rem;	background: linear-gradient(45deg, #1a73e8, #4f8cff, #1a73e8);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-size: 200% 200%;
+	animation: gradientMove 3s ease-in-out infinite;
+}
+
+.resume-subtitle {
+	font-size: 1.2rem;
+	color: #a0a0a0;
+	margin-bottom: 2rem;
+	font-weight: 300;
+}
+
+.download-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	background: linear-gradient(135deg, #1a73e8, #4f8cff);
+	color: white;
+	text-decoration: none;
+	padding: 12px 24px;
+	border-radius: 50px;
+	font-weight: 600;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
+	position: relative;
+	overflow: hidden;
+}
+
+.download-btn::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+	transition: left 0.5s;
+}
+
+.download-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 25px rgba(26, 115, 232, 0.4);
+	color: white;
+	text-decoration: none;
+}
+
+.download-btn:hover::before {
+	left: 100%;
+}
+
+.resume-viewer {
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 20px;
+	padding: 20px;	box-shadow: 
+		0 20px 40px rgba(0, 0, 0, 0.3),
+		inset 0 1px 0 rgba(255, 255, 255, 0.1);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(79, 140, 255, 0.2);
+	position: relative;
+	min-height: 80vh;
+	animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.resume-iframe {
+	width: 100%;
+	height: 80vh;
+	min-height: 600px;
+	border: none;
+	border-radius: 15px;
+	background: white;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.resume-loading {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	color: #a0a0a0;
+	font-size: 1.1rem;
+	z-index: 2;
+}
+
+.loading-spinner {
+	width: 40px;
+	height: 40px;
+	border: 3px solid rgba(79, 140, 255, 0.2);
+	border-top: 3px solid #4f8cff;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes gradientMove {
+	0%, 100% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+}
+
+/* Mobile Responsive Styles for Resume */
+@media (max-width: 768px) {
+	.resume-page {
+		padding: 70px 0 20px;
+	}
+	
+	.resume-container {
+		padding: 0 15px;
+	}
+	
+	.resume-title {
+		font-size: 2.2rem;
+		margin-bottom: 1rem;
+	}
+	
+	.resume-subtitle {
+		font-size: 1rem;
+		margin-bottom: 1.5rem;
+	}
+	
+	.download-btn {
+		padding: 10px 20px;
+		font-size: 0.9rem;
+	}
+	
+	.resume-header {
+		margin-bottom: 2rem;
+	}
+	
+	.resume-viewer {
+		padding: 15px;
+		border-radius: 15px;
+		min-height: 70vh;
+	}
+	
+	.resume-iframe {
+		height: 70vh;
+		min-height: 500px;
+		border-radius: 10px;
+	}
+	
+	.resume-loading {
+		font-size: 1rem;
+	}
+	
+	.loading-spinner {
+		width: 35px;
+		height: 35px;
+	}
+}
+
+@media (max-width: 480px) {
+	.resume-page {
+		padding: 60px 0 15px;
+	}
+	
+	.resume-container {
+		padding: 0 10px;
+	}
+	
+	.resume-title {
+		font-size: 1.8rem;
+	}
+	
+	.resume-subtitle {
+		font-size: 0.9rem;
+	}
+	
+	.download-btn {
+		padding: 8px 16px;
+		font-size: 0.85rem;
+	}
+	
+	.resume-viewer {
+		padding: 10px;
+		min-height: 65vh;
+	}
+	
+	.resume-iframe {
+		height: 65vh;
+		min-height: 450px;
+	}
+}
+
+/* Fix navbar overlap on resume page */
+.resume-page .navbar {
+	z-index: 9999;
+}
+
+/* Ensure resume page content is below navbar */
+@media (max-width: 768px) {
+	.resume-page {
+		padding-top: 80px;
+	}
+}
+
+@media (max-width: 480px) {
+	.resume-page {
+		padding-top: 70px;
+	}
 }

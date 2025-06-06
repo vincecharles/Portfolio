@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function ProjectCard({ title, description, link, image, tags }) {
+export default function ProjectCard({ title, description, link, image, tags, githubData }) {
 	const [imageError, setImageError] = useState(false);
 
 	const handleImageError = () => {
@@ -31,17 +31,67 @@ export default function ProjectCard({ title, description, link, image, tags }) {
 				</div>
 			)}
 			<h3>{title}</h3>
-			<p>{description}</p>
-			{tags && (
-				<div className="project-tags">
-					{tags.map((tag) => (
-						<span key={tag} className="project-tag">
-							{tag}
-						</span>
-					))}
+			<p>{description}</p>		{tags && (
+			<div className="project-tags">
+				{tags.map((tag) => (
+					<span key={tag} className="project-tag">
+						{tag}
+					</span>
+				))}
+			</div>
+		)}
+		
+		{/* GitHub-specific data */}
+		{githubData && (
+			<div className="github-stats-card">
+				<div className="github-stat-row">
+					{githubData.stars !== undefined && (
+						<div className="github-stat">
+							<span className="stat-icon">⭐</span>
+							<span className="stat-value">{githubData.stars}</span>
+						</div>
+					)}
+					{githubData.forks !== undefined && (
+						<div className="github-stat">
+							<span className="stat-icon">🍴</span>
+							<span className="stat-value">{githubData.forks}</span>
+						</div>
+					)}
+					{githubData.language && (
+						<div className="github-stat">
+							<span className="stat-icon">💻</span>
+							<span className="stat-value">{githubData.language}</span>
+						</div>
+					)}
+					{githubData.size && (
+						<div className="github-stat">
+							<span className="stat-icon">📁</span>
+							<span className="stat-value">{githubData.size} MB</span>
+						</div>
+					)}
 				</div>
-			)}
-			{link && (
+				
+				{githubData.lastUpdated && (
+					<div className="github-meta">
+						<small>Updated: {githubData.lastUpdated}</small>
+					</div>
+				)}
+				
+				{githubData.license && (
+					<div className="github-license">
+						<small>License: {githubData.license}</small>
+					</div>
+				)}
+				
+				{githubData.isArchived && (
+					<div className="github-archived">
+						<small>📦 Archived</small>
+					</div>
+				)}
+			</div>
+		)}
+		
+		{link && (
 				<a
 					href={link}
 					target="_blank"
