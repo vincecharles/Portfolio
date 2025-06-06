@@ -2,11 +2,13 @@
 
 import SkillsCarousel from "./SkillsCarousel";
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import Image from 'next/image';
 
 export default function AboutSection() {
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true, threshold: 0.3 });
+	const [showPDF, setShowPDF] = useState(false);
 
 	const containerVariants = {
 		hidden: { opacity: 0 },
@@ -30,8 +32,7 @@ export default function AboutSection() {
 		}
 	};
 
-	return (
-		<motion.section 
+	return (		<motion.section 
 			ref={ref}
 			className="about-section" 
 			id="about"
@@ -41,17 +42,50 @@ export default function AboutSection() {
 		>
 			<motion.div className="certifications-card" variants={itemVariants}>
 				<h3>Certifications</h3>
-				<ul className="certifications-list">
-					<li>
+				<div className="certifications-content">
+					<div className="certification-item">
+						<Image
+							src="/images/certification/github-foundations.png"
+							alt="GitHub Foundations Certification"
+							width={200}
+							height={150}
+							className="certification-badge"
+							onClick={() => setShowPDF(true)}
+							style={{ cursor: 'pointer' }}
+						/>
+						<p>GitHub Foundations</p>
+					</div>
+					<div className="certifications-link">
 						<a
 							href="https://examregistration.github.com/profile/certifications"
 							target="_blank"
 							rel="noopener noreferrer">
 							View all certifications on GitHub &rarr;
 						</a>
-					</li>
-				</ul>
+					</div>
+				</div>
 			</motion.div>
+
+			{/* PDF Modal */}
+			{showPDF && (
+				<div className="pdf-modal-overlay" onClick={() => setShowPDF(false)}>
+					<div className="pdf-modal-content" onClick={(e) => e.stopPropagation()}>
+						<button 
+							className="pdf-close-button"
+							onClick={() => setShowPDF(false)}
+							aria-label="Close PDF viewer"
+						>
+							×
+						</button>
+						<iframe
+							src="/images/certification/GitHubFoundations_Badge20250606-25-59dtmf.pdf"
+							width="100%"
+							height="100%"
+							title="GitHub Foundations Certification PDF"
+						/>
+					</div>
+				</div>
+			)}
 			
 			<div className="about-content">
 				<motion.div className="about-me-section" variants={itemVariants}>
