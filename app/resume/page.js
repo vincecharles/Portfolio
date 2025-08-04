@@ -11,8 +11,8 @@ export default function ResumePage() {
           <h1 className="resume-title">My Resume</h1>
           <p className="resume-subtitle">Vince Charles de Guzman</p>
           <a 
-            href="/images/de-Guzman_Resume.pdf" 
-            download="Vince_Charles_Resume.pdf"
+            href="/images/Vince-Charles-Portfolio.pdf" 
+            download="Vince-Charles-Portfolio.pdf"
             className="download-btn"
           >
             📄 Download PDF
@@ -27,7 +27,7 @@ export default function ResumePage() {
             </div>
           )}
           <iframe
-            src="/images/de-Guzman_Resume.pdf"
+            src="/images/Vince-Charles-Portfolio.pdf"
             className="resume-iframe"
             title="Vince Charles Resume"
             onLoad={() => setLoading(false)}
