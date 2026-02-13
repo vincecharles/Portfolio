@@ -13,7 +13,7 @@
     "@react-three/fiber": "^9.1.2",
     "bootstrap": "^5.3.6",
     "framer-motion": "^12.15.0",
-    "next": "latest",
+    "next": "15.5.8",
     "react": "latest",
     "react-bootstrap": "^2.10.10",
     "react-dom": "latest",
