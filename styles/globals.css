@@ -1,22 +1,22 @@
 /* CSS Variables and Reset */
 :root {
 	--primary: #4f8cff;
-	--bg: #181c24;
+	--bg: #0d1117;
 	--text: #e6e6e6;
-	--card-bg: #23283a;
-	--border: #2d3347;
+	--card-bg: #161b22;
+	--border: #21262d;
 	--radius: 12px;
-	--shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+	--shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 	
-	/* Alternating section backgrounds - now both dark */
-	--section-dark: #181c24;
-	--section-light: #1e2329;
+	/* Alternating section backgrounds */
+	--section-dark: #0d1117;
+	--section-light: #0f141a;
 	--text-dark: #e6e6e6;
 	--text-light: #e6e6e6;
-	--card-dark: #23283a;
-	--card-light: #2a3340;
-	--border-dark: #2d3347;
-	--border-light: #3a4556;
+	--card-dark: #161b22;
+	--card-light: #1c2330;
+	--border-dark: #21262d;
+	--border-light: #2d3d55;
 }
 
 * {
@@ -57,13 +57,13 @@ p {
 
 /* Alternating Section Backgrounds */
 .section-dark {
-	background: rgba(24, 28, 36, 0.8) !important;
-	-webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
+	background: rgba(13, 17, 23, 0.75) !important;
+	-webkit-backdrop-filter: blur(14px);
+	backdrop-filter: blur(14px);
 	position: relative;
 	padding: 4rem 0;
-	border: 2px solid rgba(79,140,255,0.3) !important;
-	box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 60px rgba(79,140,255,0.1);
+	border: 1.5px solid rgba(79,140,255,0.2) !important;
+	box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 60px rgba(79,140,255,0.08);
 	border-left: none;
 	border-right: none;
 	margin: 1rem 0;
@@ -89,13 +89,13 @@ p {
 }
 
 .section-light {
-	background: rgba(30, 35, 41, 0.8) !important;
-	-webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
+	background: rgba(15, 20, 26, 0.75) !important;
+	-webkit-backdrop-filter: blur(14px);
+	backdrop-filter: blur(14px);
 	position: relative;
 	padding: 4rem 0;
-	border: 2px solid rgba(79,140,255,0.2) !important;
-	box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 40px rgba(79,140,255,0.08);
+	border: 1.5px solid rgba(79,140,255,0.15) !important;
+	box-shadow: 0 8px 32px rgba(0,0,0,0.35), 0 0 40px rgba(79,140,255,0.06);
 	border-left: none;
 	border-right: none;
 	margin: 1rem 0;
@@ -142,17 +142,17 @@ nav.navbar {
 	left: 0;
 	right: 0;
 	z-index: 9999;
-	background: rgba(24, 28, 36, 0.9);
-	-webkit-backdrop-filter: blur(20px);
-	backdrop-filter: blur(20px);
-	border-bottom: 1px solid rgba(79, 140, 255, 0.2);
+	background: rgba(13, 17, 23, 0.85);
+	-webkit-backdrop-filter: blur(24px);
+	backdrop-filter: blur(24px);
+	border-bottom: 1px solid rgba(79, 140, 255, 0.18);
 	transition: all 0.3s ease;
 	padding: 0;
 }
 
 .navbar-scrolled {
-	background: rgba(24, 28, 36, 0.95);
-	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+	background: rgba(13, 17, 23, 0.96);
+	box-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
 	border-bottom: 1px solid rgba(79, 140, 255, 0.2);
 }
 
@@ -313,7 +313,7 @@ nav.navbar {
 	align-items: center;
 	position: relative;
 	overflow: hidden;
-	background: linear-gradient(120deg, #23283a 0%, #181c24 100%);
+	background: transparent;
 	text-align: center;
 	padding: 0 1rem;
 }
@@ -1828,5 +1828,395 @@ p {
 @media (max-width: 480px) {
 	.resume-page {
 		padding-top: 70px;
+	}
+}
+
+/* ============================================================
+   Hero Secondary CTA Button
+   ============================================================ */
+.hero-cta-secondary {
+	background: transparent;
+	color: #fff;
+	border: 2px solid rgba(255, 255, 255, 0.35);
+	padding: 0.9rem 2.2rem;
+	border-radius: 8px;
+	font-weight: 700;
+	text-decoration: none;
+	font-size: 1.15rem;
+	transition: all 0.25s ease;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	backdrop-filter: blur(8px);
+}
+
+.hero-cta-secondary:hover {
+	background: rgba(255, 255, 255, 0.12);
+	border-color: rgba(255, 255, 255, 0.7);
+	color: #fff;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.hero-cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* ============================================================
+   Revamped Interactive Resume Page
+   ============================================================ */
+.resume-page-wrapper {
+	min-height: 100vh;
+	position: relative;
+	overflow: hidden;
+	padding: 2rem 1rem 4rem 1rem;
+}
+
+.resume-orb {
+	position: fixed;
+	border-radius: 50%;
+	filter: blur(90px);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.resume-orb-1 {
+	width: 500px;
+	height: 500px;
+	background: radial-gradient(circle, rgba(79, 140, 255, 0.18) 0%, transparent 70%);
+	top: -100px;
+	right: -100px;
+	animation: orbFloat1 8s ease-in-out infinite;
+}
+
+.resume-orb-2 {
+	width: 400px;
+	height: 400px;
+	background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
+	bottom: 100px;
+	left: -80px;
+	animation: orbFloat2 10s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+	0%, 100% { transform: translate(0, 0) scale(1); }
+	50% { transform: translate(-30px, 30px) scale(1.05); }
+}
+
+@keyframes orbFloat2 {
+	0%, 100% { transform: translate(0, 0) scale(1); }
+	50% { transform: translate(20px, -20px) scale(1.08); }
+}
+
+.resume-page-inner {
+	position: relative;
+	z-index: 1;
+	max-width: 1100px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1.75rem;
+}
+
+.resume-back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	color: rgba(255, 255, 255, 0.55);
+	text-decoration: none;
+	font-size: 0.9rem;
+	font-weight: 500;
+	transition: all 0.2s ease;
+	padding: 0.4rem 0;
+}
+
+.resume-back-link:hover {
+	color: var(--primary);
+	gap: 0.6rem;
+}
+
+.resume-header-block {
+	padding: 0 0 0.5rem 0;
+}
+
+.resume-title-row {
+	display: flex;
+	align-items: center;
+	gap: 1.2rem;
+}
+
+.resume-title-icon {
+	font-size: 2.8rem;
+	color: var(--primary);
+	filter: drop-shadow(0 0 16px rgba(79, 140, 255, 0.5));
+}
+
+.resume-page-title {
+	font-size: 2.8rem;
+	font-weight: 800;
+	background: linear-gradient(135deg, #ffffff 0%, #4f8cff 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin: 0 0 0.25rem 0;
+	line-height: 1.15;
+}
+
+.resume-page-subtitle {
+	color: rgba(255, 255, 255, 0.55);
+	font-size: 1rem;
+	margin: 0 !important;
+}
+
+.resume-version-selector {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.resume-version-btn {
+	flex: 1;
+	min-width: 220px;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1.1rem 1.5rem;
+	background: rgba(35, 40, 58, 0.7);
+	border: 1.5px solid rgba(79, 140, 255, 0.2);
+	border-radius: 14px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+	color: var(--text);
+	text-align: left;
+	backdrop-filter: blur(10px);
+}
+
+.resume-version-btn::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, transparent, rgba(79, 140, 255, 0.04));
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.resume-version-btn:hover::before { opacity: 1; }
+
+.resume-version-btn:hover {
+	border-color: rgba(79, 140, 255, 0.5);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.resume-version-btn.active {
+	border-color: var(--btn-color, var(--primary));
+	background: rgba(35, 40, 58, 0.9);
+	box-shadow: 0 0 0 1px var(--btn-color, var(--primary)), 0 8px 32px rgba(79, 140, 255, 0.15);
+}
+
+.resume-btn-icon {
+	font-size: 1.5rem;
+	color: var(--primary);
+	flex-shrink: 0;
+}
+
+.resume-version-btn.active .resume-btn-icon {
+	color: var(--btn-color, var(--primary));
+}
+
+.resume-btn-text {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.resume-btn-label {
+	font-weight: 700;
+	font-size: 1rem;
+	color: #fff;
+}
+
+.resume-btn-desc {
+	font-size: 0.8rem;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.resume-active-badge {
+	position: absolute;
+	top: 0.6rem;
+	right: 0.6rem;
+	font-size: 0.7rem;
+	font-weight: 700;
+	color: #fff;
+	padding: 0.2rem 0.6rem;
+	border-radius: 20px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.resume-action-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.85rem 1.25rem;
+	background: rgba(35, 40, 58, 0.6);
+	border-radius: 12px;
+	border: 1px solid rgba(79, 140, 255, 0.15);
+	backdrop-filter: blur(10px);
+	flex-wrap: wrap;
+}
+
+.resume-action-left {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.resume-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.35rem 0.9rem;
+	border-radius: 20px;
+	font-size: 0.82rem;
+	font-weight: 700;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.resume-action-hint {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	color: rgba(255, 255, 255, 0.4);
+	font-size: 0.85rem;
+}
+
+.resume-download-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.65rem 1.5rem;
+	background: var(--btn-color, var(--primary));
+	color: #fff;
+	text-decoration: none;
+	border-radius: 10px;
+	font-weight: 700;
+	font-size: 0.9rem;
+	transition: all 0.25s ease;
+	box-shadow: 0 4px 16px rgba(79, 140, 255, 0.3);
+	white-space: nowrap;
+}
+
+.resume-download-btn:hover {
+	filter: brightness(1.15);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(79, 140, 255, 0.4);
+	color: #fff;
+}
+
+.resume-viewer-container {
+	position: relative;
+	background: rgba(24, 28, 36, 0.8);
+	border-radius: 18px;
+	border: 1.5px solid rgba(79, 140, 255, 0.2);
+	overflow: hidden;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.03);
+	min-height: 80vh;
+	backdrop-filter: blur(10px);
+}
+
+.resume-loading-overlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	background: rgba(24, 28, 36, 0.95);
+	z-index: 10;
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 1rem;
+}
+
+.resume-spinner {
+	width: 42px;
+	height: 42px;
+	border: 3px solid rgba(79, 140, 255, 0.2);
+	border-top-color: var(--primary);
+	border-radius: 50%;
+	animation: resumeSpin 0.8s linear infinite;
+}
+
+@keyframes resumeSpin {
+	to { transform: rotate(360deg); }
+}
+
+.resume-iframe {
+	width: 100%;
+	height: 82vh;
+	min-height: 600px;
+	border: none;
+	display: block;
+}
+
+.resume-bottom-cta {
+	text-align: center;
+	padding: 1.5rem 0 0.5rem 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.resume-bottom-cta p {
+	color: rgba(255, 255, 255, 0.5) !important;
+	font-size: 1rem;
+	margin: 0 !important;
+}
+
+.resume-contact-link {
+	color: var(--primary);
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 1rem;
+	transition: all 0.2s ease;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+}
+
+.resume-contact-link:hover {
+	color: #fff;
+	gap: 0.6rem;
+}
+
+@media (max-width: 768px) {
+	.resume-page-title { font-size: 2rem; }
+	.resume-title-icon { font-size: 2rem; }
+	.resume-version-selector { flex-direction: column; }
+	.resume-version-btn { min-width: unset; }
+	.resume-action-bar { flex-direction: column; align-items: flex-start; }
+	.resume-download-btn { width: 100%; justify-content: center; }
+	.resume-iframe { height: 65vh; min-height: 450px; }
+	.resume-viewer-container { min-height: 65vh; }
+}
+
+@media (max-width: 480px) {
+	.resume-page-wrapper { padding: 1rem 0.75rem 3rem; }
+	.resume-page-title { font-size: 1.6rem; }
+	.hero-cta, .hero-cta-secondary {
+		font-size: 1rem;
+		padding: 0.75rem 1.5rem;
 	}
 }

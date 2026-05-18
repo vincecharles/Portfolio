@@ -1,5 +1,5 @@
 "use client";
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaFileAlt } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -85,16 +85,31 @@ export default function Hero() {
           <a href="https://www.linkedin.com/in/vince-charles-40882b28a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedin size={22} /></a>
           <a href="mailto:vincecharlesdeguzman@outlook.com" aria-label="Email"><FaEnvelope size={22} /></a>
       </motion.div>
-      <motion.a
-        href="/resume"
-        className="hero-cta"
+      <motion.div
+        className="hero-cta-group"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9, duration: 0.6 }}
-        style={{ zIndex: 1 }}
+        style={{ zIndex: 1, display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}
       >
-        View Resume
-      </motion.a>
+        <a
+          href="/resume"
+          className="hero-cta"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+        >
+          <FaFileAlt size={16} />
+          View Resume
+        </a>
+        <a
+          href="/images/Vince_de_Guzman_ATS_Resume.pdf"
+          download="Vince_de_Guzman_ATS_Resume.pdf"
+          className="hero-cta hero-cta-secondary"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+        >
+          <FaDownload size={16} />
+          Download ATS Resume
+        </a>
+      </motion.div>
     </section>
   );
 }

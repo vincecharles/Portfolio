@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Enhanced3DBackground from '../components/Enhanced3DBackground';
+import AnimatedBackground from '../components/AnimatedBackground';
 
 export const metadata = {
   title: "Vince's Portfolio",
@@ -12,11 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {  return (
     <html lang="en">
       <body>
-        <Enhanced3DBackground>
+        <AnimatedBackground>
           <Navbar />
           {children}
           <Footer />
-        </Enhanced3DBackground>
+        </AnimatedBackground>
       </body>
     </html>
   );
