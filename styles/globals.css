@@ -2193,7 +2193,7 @@ p {
 ═══════════════════════════════════════ */
 
 .cutroom-section {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 4rem 1.5rem 3rem;
   scroll-margin-top: 90px;
@@ -2236,11 +2236,17 @@ p {
   margin: 0 !important;
 }
 
-/* Grid */
+/* Grid — 3 cols on wide, 2 on medium, 1 on mobile */
 .cutroom-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+@media (max-width: 900px) {
+  .cutroom-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .cutroom-grid { grid-template-columns: 1fr; }
 }
 
 /* Card */
@@ -2471,6 +2477,11 @@ p {
   flex-direction: column;
 }
 
+/* Portrait modal — narrow box, 9:16 video */
+.cutroom-modal-portrait {
+  max-width: 420px;
+}
+
 /* Modal header */
 .cutroom-modal-header {
   display: flex;
@@ -2518,12 +2529,20 @@ p {
   transform: rotate(90deg) scale(1.1);
 }
 
-/* The video itself */
+/* The video itself — landscape (default 16:9) */
 .cutroom-modal-video-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   background: #000;
+}
+
+/* Portrait video wrap — 9:16 */
+.cutroom-modal-video-portrait {
+  aspect-ratio: 9 / 16;
+  max-height: 70vh;
+  margin: 0 auto;
+  width: auto;
 }
 
 .cutroom-modal-video {

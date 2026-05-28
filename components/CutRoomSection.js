@@ -10,6 +10,7 @@ const videoItems = [
       "A high-energy hype video showcasing creative editing, colour grading, and motion design.",
     src: "/videos/HypeVideo-Vince.mp4",
     poster: "/images/poster-hype.jpg",
+    orientation: "landscape", // 1920x1080
     emoji: "🎬",
     tags: ["Colour Grading", "Motion", "Cinematic"],
   },
@@ -20,21 +21,54 @@ const videoItems = [
       "A short-form documentary-style edit exploring the debate around marina fishing — storytelling through visuals.",
     src: "/videos/fishing.mp4",
     poster: "/images/poster-fishing.jpg",
+    orientation: "portrait", // 1080x1920
     emoji: "🎣",
     tags: ["Documentary", "Short-form", "Storytelling"],
+  },
+  {
+    id: 3,
+    title: "Event Edit — 0221",
+    description:
+      "A dynamic event edit capturing the energy and atmosphere of a live event through tight cuts and stylised grading.",
+    src: "/videos/video-0221.mp4",
+    poster: "/images/poster-0221.jpg",
+    orientation: "landscape", // 1280x720
+    emoji: "🎉",
+    tags: ["Event", "Colour Grading", "Dynamic"],
+  },
+  {
+    id: 4,
+    title: "Sample Reel",
+    description:
+      "A showcase reel highlighting versatile editing style — from pacing and transitions to colour work.",
+    src: "/videos/sample-vid.mp4",
+    poster: "/images/poster-sample.jpg",
+    orientation: "landscape", // 1920x1080
+    emoji: "🎞️",
+    tags: ["Reel", "Transitions", "Cinematic"],
+  },
+  {
+    id: 5,
+    title: "Waylay Clutch",
+    description:
+      "An esports highlight edit featuring fast-paced cuts, motion graphics, and gaming-focused visual storytelling.",
+    src: "/videos/waylay-clutch.mp4",
+    poster: "/images/poster-waylay.jpg",
+    orientation: "landscape", // 1920x1080
+    emoji: "🎮",
+    tags: ["Esports", "Gaming", "Highlight"],
   },
 ];
 
 /* ── Video Lightbox Modal ─────────────────────────────────────────── */
 function VideoModal({ item, onClose }) {
   const modalVideoRef = useRef(null);
+  const isPortrait = item.orientation === "portrait";
 
   // Lock body scroll while modal is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, []);
 
   // Close on Escape key
@@ -64,7 +98,7 @@ function VideoModal({ item, onClose }) {
         aria-label={`Playing: ${item.title}`}
       >
         <motion.div
-          className="cutroom-modal-content"
+          className={`cutroom-modal-content${isPortrait ? " cutroom-modal-portrait" : ""}`}
           initial={{ scale: 0.82, opacity: 0, y: 40 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.88, opacity: 0, y: 20 }}
@@ -87,7 +121,7 @@ function VideoModal({ item, onClose }) {
           </div>
 
           {/* Video with full native controls */}
-          <div className="cutroom-modal-video-wrap">
+          <div className={`cutroom-modal-video-wrap${isPortrait ? " cutroom-modal-video-portrait" : ""}`}>
             <video
               ref={modalVideoRef}
               src={item.src}
@@ -121,7 +155,7 @@ function VideoCard({ item, index, onOpenModal }) {
       className="cutroom-card"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay: index * 0.15, ease: "easeOut" }}
+      transition={{ duration: 0.55, delay: index * 0.1, ease: "easeOut" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -136,7 +170,7 @@ function VideoCard({ item, index, onOpenModal }) {
           (e.key === "Enter" || e.key === " ") && onOpenModal(item)
         }
       >
-        {/* Static poster image shown as background thumbnail */}
+        {/* Static poster image */}
         {item.poster && (
           <img
             src={item.poster}
@@ -211,7 +245,7 @@ export default function CutRoomSection() {
           </p>
         </motion.div>
 
-        {/* Cards grid */}
+        {/* Cards grid — responsive for 5 items */}
         <div className="cutroom-grid">
           {videoItems.map((item, i) => (
             <VideoCard
@@ -224,7 +258,7 @@ export default function CutRoomSection() {
         </div>
       </motion.section>
 
-      {/* Modal rendered at root level (outside section) */}
+      {/* Modal rendered at root level */}
       {activeVideo && (
         <VideoModal item={activeVideo} onClose={handleCloseModal} />
       )}
