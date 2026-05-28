@@ -2281,7 +2281,19 @@ p {
   transition: transform 0.4s ease;
 }
 
-.cutroom-card:hover .cutroom-video {
+/* Static poster image — fills card like a video frame */
+.cutroom-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.cutroom-card:hover .cutroom-video,
+.cutroom-card:hover .cutroom-poster {
   transform: scale(1.04);
 }
 

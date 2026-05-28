@@ -9,6 +9,7 @@ const videoItems = [
     description:
       "A high-energy hype video showcasing creative editing, colour grading, and motion design.",
     src: "/videos/HypeVideo-Vince.mp4",
+    poster: "/images/poster-hype.jpg",
     emoji: "🎬",
     tags: ["Colour Grading", "Motion", "Cinematic"],
   },
@@ -18,6 +19,7 @@ const videoItems = [
     description:
       "A short-form documentary-style edit exploring the debate around marina fishing — storytelling through visuals.",
     src: "/videos/fishing.mp4",
+    poster: "/images/poster-fishing.jpg",
     emoji: "🎣",
     tags: ["Documentary", "Short-form", "Storytelling"],
   },
@@ -113,18 +115,6 @@ function VideoModal({ item, onClose }) {
 /* ── Thumbnail Card ───────────────────────────────────────────────── */
 function VideoCard({ item, index, onOpenModal }) {
   const [hovered, setHovered] = useState(false);
-  const thumbRef = useRef(null);
-
-  // Seek to 1s once metadata loads so the browser paints a real preview frame
-  useEffect(() => {
-    const v = thumbRef.current;
-    if (!v) return;
-    const onMeta = () => { v.currentTime = 1; };
-    v.addEventListener("loadedmetadata", onMeta);
-    // If metadata already loaded (cached), trigger immediately
-    if (v.readyState >= 1) onMeta();
-    return () => v.removeEventListener("loadedmetadata", onMeta);
-  }, [item.src]);
 
   return (
     <motion.div
@@ -146,17 +136,16 @@ function VideoCard({ item, index, onOpenModal }) {
           (e.key === "Enter" || e.key === " ") && onOpenModal(item)
         }
       >
-        {/* Native video thumbnail — seeks to 1s to avoid black frame */}
-        <video
-          ref={thumbRef}
-          src={item.src}
-          className="cutroom-video"
-          preload="metadata"
-          muted
-          playsInline
-        />
+        {/* Static poster image shown as background thumbnail */}
+        {item.poster && (
+          <img
+            src={item.poster}
+            alt={`${item.title} preview`}
+            className="cutroom-video cutroom-poster"
+          />
+        )}
 
-        {/* Play overlay — always visible, pulse on hover */}
+        {/* Play overlay */}
         <div className={`cutroom-overlay${hovered ? " cutroom-overlay-hover" : ""}`}>
           <div className="cutroom-play-btn">
             <svg viewBox="0 0 24 24" fill="white" width="38" height="38">
