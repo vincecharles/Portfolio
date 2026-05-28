@@ -1,12 +1,13 @@
 "use client";
-import { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 
 const videoItems = [
   {
     id: 1,
     title: "Hype Reel",
-    description: "A high-energy hype video showcasing creative editing, colour grading, and motion design.",
+    description:
+      "A high-energy hype video showcasing creative editing, colour grading, and motion design.",
     src: "/videos/HypeVideo-Vince.mp4",
     emoji: "🎬",
     tags: ["Colour Grading", "Motion", "Cinematic"],
@@ -14,72 +15,142 @@ const videoItems = [
   {
     id: 2,
     title: "Should You Fish in a Marina?",
-    description: "A short-form documentary-style edit exploring the debate around marina fishing — storytelling through visuals.",
+    description:
+      "A short-form documentary-style edit exploring the debate around marina fishing — storytelling through visuals.",
     src: "/videos/fishing.mp4",
     emoji: "🎣",
     tags: ["Documentary", "Short-form", "Storytelling"],
   },
 ];
 
-function VideoCard({ item, index }) {
-  const videoRef = useRef(null);
-  const [playing, setPlaying] = useState(false);
-  const [hovered, setHovered] = useState(false);
+/* ── Video Lightbox Modal ─────────────────────────────────────────── */
+function VideoModal({ item, onClose }) {
+  const modalVideoRef = useRef(null);
 
-  const togglePlay = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (playing) {
-      v.pause();
-      setPlaying(false);
-    } else {
-      v.play();
-      setPlaying(true);
-    }
-  };
+  // Lock body scroll while modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [onClose]);
+
+  // Autoplay when modal opens
+  useEffect(() => {
+    const v = modalVideoRef.current;
+    if (v) v.play().catch(() => {});
+  }, []);
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="cutroom-modal-backdrop"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        onClick={onClose}
+        aria-modal="true"
+        role="dialog"
+        aria-label={`Playing: ${item.title}`}
+      >
+        <motion.div
+          className="cutroom-modal-content"
+          initial={{ scale: 0.82, opacity: 0, y: 40 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.88, opacity: 0, y: 20 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className="cutroom-modal-header">
+            <div className="cutroom-modal-title-row">
+              <span className="cutroom-modal-emoji">{item.emoji}</span>
+              <h3 className="cutroom-modal-title">{item.title}</h3>
+            </div>
+            <button
+              className="cutroom-modal-close"
+              onClick={onClose}
+              aria-label="Close video"
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* Video with full native controls */}
+          <div className="cutroom-modal-video-wrap">
+            <video
+              ref={modalVideoRef}
+              src={item.src}
+              className="cutroom-modal-video"
+              controls
+              playsInline
+              preload="auto"
+            />
+          </div>
+
+          {/* Tags */}
+          <div className="cutroom-modal-footer">
+            {item.tags.map((tag) => (
+              <span key={tag} className="cutroom-tag">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+/* ── Thumbnail Card ───────────────────────────────────────────────── */
+function VideoCard({ item, index, onOpenModal }) {
+  const [hovered, setHovered] = useState(false);
 
   return (
     <motion.div
       className="cutroom-card"
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
+      transition={{ duration: 0.55, delay: index * 0.15, ease: "easeOut" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Video area */}
+      {/* Thumbnail / click-to-open area */}
       <div
         className="cutroom-video-wrapper"
-        onClick={togglePlay}
+        onClick={() => onOpenModal(item)}
         role="button"
         tabIndex={0}
-        aria-label={playing ? `Pause ${item.title}` : `Play ${item.title}`}
-        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && togglePlay()}
+        aria-label={`Watch ${item.title}`}
+        onKeyDown={(e) =>
+          (e.key === "Enter" || e.key === " ") && onOpenModal(item)
+        }
       >
+        {/* Native video thumbnail (first frame via preload=metadata) */}
         <video
-          ref={videoRef}
           src={item.src}
           className="cutroom-video"
-          loop
-          playsInline
           preload="metadata"
-          onEnded={() => setPlaying(false)}
+          muted
+          playsInline
         />
 
-        {/* Play / Pause overlay */}
-        <div className={`cutroom-overlay ${playing && !hovered ? "cutroom-overlay-hidden" : ""}`}>
+        {/* Play overlay — always visible, pulse on hover */}
+        <div className={`cutroom-overlay${hovered ? " cutroom-overlay-hover" : ""}`}>
           <div className="cutroom-play-btn">
-            {playing ? (
-              <svg viewBox="0 0 24 24" fill="white" width="36" height="36">
-                <rect x="6" y="4" width="4" height="16" rx="1" />
-                <rect x="14" y="4" width="4" height="16" rx="1" />
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" fill="white" width="36" height="36">
-                <polygon points="5,3 19,12 5,21" />
-              </svg>
-            )}
+            <svg viewBox="0 0 24 24" fill="white" width="38" height="38">
+              <polygon points="5,3 19,12 5,21" />
+            </svg>
           </div>
+          <span className="cutroom-play-hint">Click to watch</span>
         </div>
 
         {/* Scan-line cinema effect */}
@@ -105,39 +176,56 @@ function VideoCard({ item, index }) {
   );
 }
 
+/* ── Section ──────────────────────────────────────────────────────── */
 export default function CutRoomSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.15 });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [activeVideo, setActiveVideo] = useState(null);
+
+  const handleOpenModal = useCallback((item) => setActiveVideo(item), []);
+  const handleCloseModal = useCallback(() => setActiveVideo(null), []);
 
   return (
-    <motion.section
-      ref={ref}
-      className="cutroom-section"
-      id="cutroom"
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      {/* Section header */}
-      <motion.div
-        className="cutroom-header"
-        initial={{ y: 30, opacity: 0 }}
-        animate={isInView ? { y: 0, opacity: 1 } : {}}
-        transition={{ duration: 0.7, delay: 0.1 }}
+    <>
+      <motion.section
+        ref={ref}
+        className="cutroom-section"
+        id="cutroom"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <span className="cutroom-badge">🎞️ Video Edits</span>
-        <h2 className="cutroom-heading">The Cut Room</h2>
-        <p className="cutroom-subheading">
-          Where raw footage becomes something worth watching.
-        </p>
-      </motion.div>
+        {/* Section header */}
+        <motion.div
+          className="cutroom-header"
+          initial={{ y: 24, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <span className="cutroom-badge">🎞️ Video Edits</span>
+          <h2 className="cutroom-heading">The Cut Room</h2>
+          <p className="cutroom-subheading">
+            Where raw footage becomes something worth watching.
+          </p>
+        </motion.div>
 
-      {/* Cards grid */}
-      <div className="cutroom-grid">
-        {videoItems.map((item, i) => (
-          <VideoCard key={item.id} item={item} index={i} />
-        ))}
-      </div>
-    </motion.section>
+        {/* Cards grid */}
+        <div className="cutroom-grid">
+          {videoItems.map((item, i) => (
+            <VideoCard
+              key={item.id}
+              item={item}
+              index={i}
+              onOpenModal={handleOpenModal}
+            />
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Modal rendered at root level (outside section) */}
+      {activeVideo && (
+        <VideoModal item={activeVideo} onClose={handleCloseModal} />
+      )}
+    </>
   );
 }

@@ -59,9 +59,8 @@ p {
 
 /* Alternating Section Backgrounds */
 .section-dark {
-	background: rgba(13, 17, 23, 0.75) !important;
-	-webkit-backdrop-filter: blur(14px);
-	backdrop-filter: blur(14px);
+	/* Solid bg — backdrop-filter on scrolling elements destroys performance */
+	background: rgba(13, 17, 23, 0.92) !important;
 	position: relative;
 	padding: 4rem 0;
 	border: 1.5px solid rgba(79,140,255,0.2) !important;
@@ -69,6 +68,7 @@ p {
 	border-left: none;
 	border-right: none;
 	margin: 1rem 0;
+	transform: translateZ(0);
 }
 
 .section-dark::before {
@@ -91,9 +91,7 @@ p {
 }
 
 .section-light {
-	background: rgba(15, 20, 26, 0.75) !important;
-	-webkit-backdrop-filter: blur(14px);
-	backdrop-filter: blur(14px);
+	background: rgba(15, 20, 26, 0.92) !important;
 	position: relative;
 	padding: 4rem 0;
 	border: 1.5px solid rgba(79,140,255,0.15) !important;
@@ -101,6 +99,7 @@ p {
 	border-left: none;
 	border-right: none;
 	margin: 1rem 0;
+	transform: translateZ(0);
 }
 
 .section-light::before {
@@ -112,14 +111,7 @@ p {
 	bottom: 0;
 	background-image: 
 		radial-gradient(circle at 25% 25%, rgba(79, 140, 255, 0.06) 0%, transparent 50%),
-		radial-gradient(circle at 75% 75%, rgba(79, 140, 255, 0.04) 0%, transparent 50%),
-		repeating-linear-gradient(
-			45deg,
-			transparent,
-			transparent 100px,
-			rgba(79, 140, 255, 0.02) 101px,
-			rgba(79, 140, 255, 0.02) 102px
-		);
+		radial-gradient(circle at 75% 75%, rgba(79, 140, 255, 0.04) 0%, transparent 50%);
 	pointer-events: none;
 	z-index: 0;
 }
@@ -2408,4 +2400,142 @@ p {
   .cutroom-heading { font-size: 2rem; }
   .cutroom-grid { grid-template-columns: 1fr; }
   .cutroom-section { padding: 3rem 1rem 2rem; }
+}
+
+/* ── Play hint label ──────────────────────────────────────────────── */
+.cutroom-play-hint {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.cutroom-overlay-hover .cutroom-play-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pulse glow on play button when hovered */
+.cutroom-overlay-hover .cutroom-play-btn {
+  animation: playPulse 1.4s ease-in-out infinite;
+}
+@keyframes playPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(79,140,255,0.5); }
+  50%       { box-shadow: 0 0 55px rgba(79,140,255,0.85), 0 0 90px rgba(79,140,255,0.25); }
+}
+
+/* ── Video Lightbox Modal ─────────────────────────────────────────── */
+.cutroom-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5, 7, 14, 0.88);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.cutroom-modal-content {
+  background: rgba(18, 22, 32, 0.97);
+  border: 1.5px solid rgba(79,140,255,0.3);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 880px;
+  box-shadow:
+    0 0 0 1px rgba(79,140,255,0.12),
+    0 32px 80px rgba(0,0,0,0.7),
+    0 0 120px rgba(79,140,255,0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal header */
+.cutroom-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.4rem 0.75rem;
+  border-bottom: 1px solid rgba(79,140,255,0.12);
+}
+
+.cutroom-modal-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.cutroom-modal-emoji {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.cutroom-modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.cutroom-modal-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(79,140,255,0.3);
+  background: rgba(79,140,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+.cutroom-modal-close:hover {
+  background: rgba(79,140,255,0.3);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* The video itself */
+.cutroom-modal-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.cutroom-modal-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Modal footer */
+.cutroom-modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem 1rem;
+  border-top: 1px solid rgba(79,140,255,0.1);
+}
+
+/* Mobile modal */
+@media (max-width: 600px) {
+  .cutroom-modal-content {
+    border-radius: 14px;
+    max-height: 92vh;
+  }
+  .cutroom-modal-title { font-size: 1rem; }
+  .cutroom-modal-header { padding: 0.75rem 1rem 0.6rem; }
+  .cutroom-modal-footer { padding: 0.65rem 1rem 0.8rem; }
 }
