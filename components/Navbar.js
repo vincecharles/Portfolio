@@ -8,6 +8,7 @@ const navLinks = [
 	{ href: "#hero", label: "Home" },
 	{ href: "#about", label: "About" },
 	{ href: "#projects", label: "Projects" },
+	{ href: "#cutroom", label: "The Cut Room" },
 	{ href: "#github", label: "GitHub" },
 	{ href: "#contact", label: "Contact" },
 	{ href: "/resume", label: "Resume" },
@@ -26,7 +27,7 @@ export default function Navbar() {
 			
 			// Only handle active section detection on the homepage
 			if (pathname === '/') {
-				const sections = ["hero", "about", "projects", "github", "contact"];
+				const sections = ["hero", "about", "projects", "cutroom", "github", "contact"];
 				for (let i = sections.length - 1; i >= 0; i--) {
 					const el = document.getElementById(sections[i]);
 					if (el && window.scrollY + 100 >= el.offsetTop) {
