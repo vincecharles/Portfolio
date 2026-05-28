@@ -113,6 +113,18 @@ function VideoModal({ item, onClose }) {
 /* ── Thumbnail Card ───────────────────────────────────────────────── */
 function VideoCard({ item, index, onOpenModal }) {
   const [hovered, setHovered] = useState(false);
+  const thumbRef = useRef(null);
+
+  // Seek to 1s once metadata loads so the browser paints a real preview frame
+  useEffect(() => {
+    const v = thumbRef.current;
+    if (!v) return;
+    const onMeta = () => { v.currentTime = 1; };
+    v.addEventListener("loadedmetadata", onMeta);
+    // If metadata already loaded (cached), trigger immediately
+    if (v.readyState >= 1) onMeta();
+    return () => v.removeEventListener("loadedmetadata", onMeta);
+  }, [item.src]);
 
   return (
     <motion.div
@@ -134,8 +146,9 @@ function VideoCard({ item, index, onOpenModal }) {
           (e.key === "Enter" || e.key === " ") && onOpenModal(item)
         }
       >
-        {/* Native video thumbnail (first frame via preload=metadata) */}
+        {/* Native video thumbnail — seeks to 1s to avoid black frame */}
         <video
+          ref={thumbRef}
           src={item.src}
           className="cutroom-video"
           preload="metadata"
