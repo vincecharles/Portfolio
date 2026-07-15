@@ -47,8 +47,8 @@ export default function AboutSection() {
 						<Image
 							src="/images/certification/github-foundations.png"
 							alt="GitHub Foundations Certification"
-							width={200}
-							height={150}
+							width={280}
+							height={280}
 							className="certification-badge"
 							onClick={() => setShowPDF(true)}
 							style={{ cursor: 'pointer' }}
