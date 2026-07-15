@@ -9,6 +9,7 @@ export default function AboutSection() {
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true, threshold: 0.3 });
 	const [showPDF, setShowPDF] = useState(false);
+	const [showAnthropicPDF, setShowAnthropicPDF] = useState(false);
 
 	const containerVariants = {
 		hidden: { opacity: 0 },
@@ -42,7 +43,9 @@ export default function AboutSection() {
 		>
 			<motion.div className="certifications-card" variants={itemVariants}>
 				<h3>Certifications</h3>
-				<div className="certifications-content">
+				<div className="certifications-content certifications-grid">
+
+					{/* GitHub Foundations Badge */}
 					<div className="certification-item">
 						<Image
 							src="/images/certification/github-foundations.png"
@@ -55,18 +58,41 @@ export default function AboutSection() {
 						/>
 						<p>GitHub Foundations</p>
 					</div>
-					<div className="certifications-link">
-						<a
-							href="https://examregistration.github.com/profile/certifications"
-							target="_blank"
-							rel="noopener noreferrer">
-							View all certifications on GitHub &rarr;
-						</a>
+
+					{/* Anthropic AI Fluency Certificate */}
+					<div className="certification-item">
+						<div
+							className="cert-pdf-preview"
+							onClick={() => setShowAnthropicPDF(true)}
+							style={{ cursor: 'pointer' }}
+						>
+							<embed
+								src="/images/certificate-n9om568xqqtk-1784104543.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+								type="application/pdf"
+								width="280"
+								height="200"
+								className="cert-pdf-embed"
+							/>
+							<div className="cert-pdf-overlay">
+								<span>🔍 Click to view</span>
+							</div>
+						</div>
+						<p>AI Fluency: Framework &amp; Foundations</p>
+						<p className="cert-issuer">Anthropic</p>
 					</div>
+
+				</div>
+				<div className="certifications-link">
+					<a
+						href="https://examregistration.github.com/profile/certifications"
+						target="_blank"
+						rel="noopener noreferrer">
+						View all certifications on GitHub &rarr;
+					</a>
 				</div>
 			</motion.div>
 
-			{/* PDF Modal */}
+			{/* GitHub Foundations PDF Modal */}
 			{showPDF && (
 				<div className="pdf-modal-overlay" onClick={() => setShowPDF(false)}>
 					<div className="pdf-modal-content" onClick={(e) => e.stopPropagation()}>
@@ -82,6 +108,27 @@ export default function AboutSection() {
 							width="100%"
 							height="100%"
 							title="GitHub Foundations Certification PDF"
+						/>
+					</div>
+				</div>
+			)}
+
+			{/* Anthropic AI Fluency PDF Modal */}
+			{showAnthropicPDF && (
+				<div className="pdf-modal-overlay" onClick={() => setShowAnthropicPDF(false)}>
+					<div className="pdf-modal-content" onClick={(e) => e.stopPropagation()}>
+						<button 
+							className="pdf-close-button"
+							onClick={() => setShowAnthropicPDF(false)}
+							aria-label="Close PDF viewer"
+						>
+							×
+						</button>
+						<iframe
+							src="/images/certificate-n9om568xqqtk-1784104543.pdf"
+							width="100%"
+							height="100%"
+							title="AI Fluency: Framework & Foundations - Anthropic"
 						/>
 					</div>
 				</div>

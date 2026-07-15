@@ -1031,6 +1031,76 @@ footer.footer {
 	gap: 1.5rem;
 }
 
+.certifications-grid {
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2rem;
+}
+
+/* PDF Certificate Preview Thumbnail */
+.cert-pdf-preview {
+	position: relative;
+	width: 280px;
+	height: 200px;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 2px solid transparent;
+	transition: all 0.3s ease;
+	background: #1a1a2e;
+}
+
+.cert-pdf-preview:hover {
+	transform: scale(1.03);
+	border-color: var(--primary);
+	box-shadow: 0 8px 32px rgba(79, 140, 255, 0.4);
+}
+
+.cert-pdf-embed {
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	border: none;
+}
+
+.cert-pdf-overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0);
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	padding-bottom: 0.75rem;
+	transition: background 0.3s ease;
+}
+
+.cert-pdf-preview:hover .cert-pdf-overlay {
+	background: rgba(0, 0, 0, 0.45);
+}
+
+.cert-pdf-overlay span {
+	color: #fff;
+	font-size: 0.85rem;
+	font-weight: 600;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	background: rgba(79, 140, 255, 0.85);
+	padding: 0.3rem 0.8rem;
+	border-radius: 20px;
+}
+
+.cert-pdf-preview:hover .cert-pdf-overlay span {
+	opacity: 1;
+}
+
+.cert-issuer {
+	color: #a0aec0 !important;
+	font-size: 0.78rem !important;
+	font-weight: 400 !important;
+	margin-top: -0.3rem;
+}
+
+
 .certification-item {
 	display: flex;
 	flex-direction: column;
