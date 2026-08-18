@@ -149,7 +149,7 @@ export default function AboutSection() {
 					<div className="about-timeline">
 						<div className="timeline-item">
 							<div className="timeline-date">
-								<span>2022 - Present</span>
+								<span>2021 - 2025</span>
 							</div>
 							<div className="timeline-content">
 								<h4>Bachelor of Science in Information Technology</h4>
